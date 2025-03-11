@@ -58,7 +58,7 @@ public class ProductService implements IProductService {
                 String name = resultSet.getString("name");
                 double price = resultSet.getDouble("price");
                 String description = resultSet.getString("description");
-                int quality = resultSet.getInt("quality");
+                int quality = resultSet.getInt("quantity");
                 int releaseDate = resultSet.getInt("id_category");
                 product = new Product(findId,name,price,description,quality,releaseDate);
                 break;
