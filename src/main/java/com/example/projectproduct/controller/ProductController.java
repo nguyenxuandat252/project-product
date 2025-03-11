@@ -1,5 +1,6 @@
 package com.example.projectproduct.controller;
 
+import com.example.projectproduct.dto.ProductDto;
 import com.example.projectproduct.model.Product;
 import com.example.projectproduct.service.IProductService;
 import com.example.projectproduct.service.ProductService;
@@ -57,16 +58,33 @@ public class ProductController extends HttpServlet {
         }
         switch (action) {
             case "create":
-
+                String name = req.getParameter("name");
+                double price = Double.parseDouble(req.getParameter("price"));
+                String description = req.getParameter("description");
+                int  quality = Integer.parseInt(req.getParameter("quality"));
+                int idCategory = Integer.parseInt(req.getParameter("id_category"));
+                Product product = new Product(name,price,description,quality,idCategory);
+                productService.addProduct(product);
+                resp.sendRedirect("/admin");
                 break;
             case "update":
-
+                int idUpdate = Integer.parseInt(req.getParameter("id"));
+                String nameUpdate = req.getParameter("name");
+                double priceUpdate = Double.parseDouble(req.getParameter("price"));
+                String descriptionUpdate = req.getParameter("description");
+                int  qualityUpdate = Integer.parseInt(req.getParameter("quality"));
+                int idCategoryUpdate = Integer.parseInt(req.getParameter("id_category"));
+                Product product1 = new Product(idUpdate,nameUpdate,priceUpdate,descriptionUpdate,qualityUpdate,idCategoryUpdate);
+                productService.updateProduct(idUpdate,product1);
+                req.setAttribute("list",productService.getProduct());
+                req.getRequestDispatcher("/view/list.jsp").forward(req,resp);
             case "search":
-
+                String nameSearch =req.getParameter("name");
+                List<ProductDto> productDtoList = productService.searchProduct(nameSearch);
+                req.setAttribute("list",productDtoList);
+                req.getRequestDispatcher("/view/list.jsp").forward(req,resp);
                 break;
             default:
-
         }
-
     }
 }

@@ -20,6 +20,14 @@ public class Product {
         this.idCategory = idCategory;
     }
 
+    public Product(String name, double price, String description, int quality, int idCategory) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.quality = quality;
+        this.idCategory = idCategory;
+    }
+
     public int getId() {
         return id;
     }
