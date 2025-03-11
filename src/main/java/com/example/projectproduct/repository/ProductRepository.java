@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository implements IProductRepository {
-    private final static String SELECT_ALL = "select product.id,product.`name`,product.price,product.description,product.quality,product.id_category,category.`name` from product left join category on product.id_category=category.id";
+    private final static String SELECT_ALL = "select product.id,product.name,product.price,product.description,product.quantity,product.id_category,category.name as category_name  from product left join category on product.id_category=category.id";
     private final static String ADD_NEW = "insert into product (`name`,price,description,quality,id_category) value(?,?,?,?,?)";
-    private final static String EDIT = "update product set  `name`=?, price=?,description=?,quality=?,id_category=? WHERE id=?";
+    private final static String EDIT = "update product set  `name`=?, price=?,description=?,quantity=?,id_category=? WHERE id=?";
     private final static String DELETE = "delete from product where id=?";
     private final static String SEARCH = "SELECT p.*, c.name FROM product p LEFT JOIN category c ON p.id_category = c.id WHERE p.name LIKE ?";
 
@@ -29,9 +29,9 @@ public class ProductRepository implements IProductRepository {
                 String code = resultSet.getString("name");
                 double price = resultSet.getDouble("price");
                 String description = resultSet.getString("description");
-                int quality = resultSet.getInt("quality");
+                int quality = resultSet.getInt("quantity");
                 int idCategory = resultSet.getInt("id_category");
-                String nameCategory = resultSet.getString("name");
+                String nameCategory = resultSet.getString("category_name");
                 ProductDto productDto = new ProductDto(id,code,price,description,quality,idCategory,nameCategory);
                 productDtoList.add(productDto);
             }
@@ -105,7 +105,7 @@ public class ProductRepository implements IProductRepository {
                 String nameSearch = resultSet.getString("name");
                 double priceSearch = resultSet.getDouble("price");
                 String descriptionSearch = resultSet.getString("description");
-                int qualitySearch = resultSet.getInt("quality");
+                int qualitySearch = resultSet.getInt("quantity");
                 int idCategorySearch = resultSet.getInt("id_category");
                 String nameCategorySearch = resultSet.getString("name");
                 ProductDto productDto = new ProductDto(idSearch,nameSearch,priceSearch,descriptionSearch,qualitySearch, idCategorySearch,nameCategorySearch);
