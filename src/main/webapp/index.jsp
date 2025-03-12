@@ -8,5 +8,6 @@
 <body>
 <c:redirect url="/admin"></c:redirect>
 <h2>Đạt tào lao</h2>
+<p>ok luôn</p>
 </body>
 </html>
