@@ -2,22 +2,55 @@ package com.example.projectproduct.dto;
 
 public class OrderDto {
     private int id;
-    private String userName;
+    private String name;
     private String phoneNumber;
     private String address;
     private String date;
+    private String nameProduct;
+    private int quantity;
+    private double price;
     private String status;
+    private double sumMonney;
 
     public OrderDto() {
     }
 
-    public OrderDto(int id, String userName, String phoneNumber, String address, String date, String status) {
+    public OrderDto(int id, String name, String phoneNumber, String address, String date, String nameProduct, int quantity, double price, String status) {
         this.id = id;
-        this.userName = userName;
+        this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.date = date;
+        this.nameProduct = nameProduct;
+        this.quantity = quantity;
+        this.price = price;
         this.status = status;
+    }
+
+    public OrderDto(int id, String name, String phoneNumber, String address, String date, String nameProduct, double price, String status) {
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.date = date;
+        this.nameProduct = nameProduct;
+        this.price = price;
+        this.status = status;
+    }
+    public OrderDto(int id, String nameProduct, double price, int quantity,double sumMonney) {
+        this.id = id;
+        this.nameProduct = nameProduct;
+        this.quantity = quantity;
+        this.price = price;
+        this.sumMonney = sumMonney;
+    }
+
+    public double getSumMonney() {
+        return sumMonney;
+    }
+
+    public void setSumMonney(double sumMonney) {
+        this.sumMonney = sumMonney;
     }
 
     public int getId() {
@@ -28,12 +61,12 @@ public class OrderDto {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhoneNumber() {
@@ -58,6 +91,30 @@ public class OrderDto {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getNameProduct() {
+        return nameProduct;
+    }
+
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public String getStatus() {

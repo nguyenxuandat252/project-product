@@ -1,5 +1,7 @@
 package com.example.projectproduct.model;
 
+import java.util.Objects;
+
 public class Product {
     private int id;
     private String name;
@@ -27,6 +29,7 @@ public class Product {
         this.quantity = quality;
         this.idCategory = idCategory;
     }
+
 
     public int getId() {
         return id;
@@ -74,5 +77,17 @@ public class Product {
 
     public void setIdCategory(int idCategory) {
         this.idCategory = idCategory;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id == product.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }

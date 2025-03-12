@@ -21,6 +21,14 @@ public class ProductDto {
         this.idCategory = idCategory;
         this.nameCategory = nameCategory;
     }
+    public ProductDto(int id, String name, double price, String description, int quality, String nameCategory) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.quantity = quality;
+        this.nameCategory = nameCategory;
+    }
 
     public int getId() {
         return id;

@@ -39,7 +39,7 @@
             </div>
             <form action="/admin?action=search" method="post" class="mx-0 my-0 d-flex align-items-center ">
                 <input class="form-control form-control-sm w-75  me-2" name="name" placeholder="Model sản phẩm cần tìm" value="${param.name}">
-                <button class="btn btn-primary btn-sm justify-content-between">Search</button>
+                <button class="btn btn-primary btn-sm justify-content-between">Tìm kiếm</button>
             </form>
         </div>
     </div>

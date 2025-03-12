@@ -1,5 +1,6 @@
 package com.example.projectproduct.service;
 
+import com.example.projectproduct.dto.OrderDetailDto;
 import com.example.projectproduct.dto.OrderDto;
 import com.example.projectproduct.model.Order;
 import com.example.projectproduct.repository.IOrderRepository;
@@ -22,5 +23,10 @@ public class OrderService implements IOrderService {
     @Override
     public boolean deleteOrder(int id) {
         return orderRepository.deleteOrder(id);
+    }
+
+    @Override
+    public List<OrderDetailDto> getOrderDetail(int id) {
+        return orderRepository.getOrderDetail(id);
     }
 }
