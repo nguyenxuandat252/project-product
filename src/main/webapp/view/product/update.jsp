@@ -16,7 +16,7 @@
     <input name="name" placeholder="Nhập tên" value="${findId.getName()}">
     <input name="price" placeholder="Nhập giá" value="${findId.getPrice()}">
     <input name="description" placeholder="Nhập mô tả" value="${findId.getDescription()}">
-    <input name="quantity" placeholder="Nhập số lượng" value="${findId.getQuality()}">
+    <input name="quantity" placeholder="Nhập số lượng" value="${findId.getQuantity()}">
     <input name="id_category" placeholder="Nhập id phụ kiện" value="${findId.getIdCategory()}">
     <button>Lưu</button>
 </form>
