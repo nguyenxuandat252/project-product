@@ -12,7 +12,7 @@ import java.util.List;
 
 public class OrderRepository implements IOrderRepository{
 
-    private final static String SELECT_ALL = "select user.id,user.username,user.phone_number,user.address,order_user.`date`,order_user.`status` from user left join order_user on user.id=order_user.id_user where status='pending'";
+    private final static String SELECT_ALL = "select  user.id,user.username,user.phone_number,user.address,order_user.`date`,order_user.`status` from user left join order_user on user.id=order_user.id_user where status!=''";
     private final static String UPDATE="update order_user set status =? where id=?";
     private final static String DELETE="delete from order_user where id=?";
     @Override
