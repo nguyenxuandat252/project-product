@@ -37,17 +37,7 @@ public class OrderDto {
         this.price = price;
         this.status = status;
     }
-
-    public OrderDto(int id, String name, String phoneNumber, String address, String date, String nameProduct, double price, String status) {
-        this.id = id;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.date = date;
-        this.nameProduct = nameProduct;
-        this.price = price;
-        this.status = status;
-    }
+    
     public OrderDto(int id, String nameProduct, double price, int quantity,double sumMonney) {
         this.id = id;
         this.nameProduct = nameProduct;
