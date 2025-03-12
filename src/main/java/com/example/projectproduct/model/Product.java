@@ -5,7 +5,7 @@ public class Product {
     private String name;
     private double price;
     private String description;
-    private int quality;
+    private int quantity;
     private int idCategory;
 
     public Product() {
@@ -16,7 +16,7 @@ public class Product {
         this.name = name;
         this.price = price;
         this.description = description;
-        this.quality = quality;
+        this.quantity = quality;
         this.idCategory = idCategory;
     }
 
@@ -24,7 +24,7 @@ public class Product {
         this.name = name;
         this.price = price;
         this.description = description;
-        this.quality = quality;
+        this.quantity = quality;
         this.idCategory = idCategory;
     }
 
@@ -60,12 +60,12 @@ public class Product {
         this.description = description;
     }
 
-    public int getQuality() {
-        return quality;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQuality(int quality) {
-        this.quality = quality;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public int getIdCategory() {

@@ -49,7 +49,7 @@ public class ProductRepository implements IProductRepository {
             preparedStatement.setString(1, product.getName());
             preparedStatement.setDouble(2, product.getPrice());
             preparedStatement.setString(3, product.getDescription());
-            preparedStatement.setInt(4,product.getQuality());
+            preparedStatement.setInt(4,product.getQuantity());
             preparedStatement.setInt(5,product.getIdCategory());
             int row = preparedStatement.executeUpdate();
             return row==1;
@@ -67,7 +67,7 @@ public class ProductRepository implements IProductRepository {
             preparedStatement.setString(1,product.getName());
             preparedStatement.setDouble(2,product.getPrice());
             preparedStatement.setString(3,product.getDescription());
-            preparedStatement.setDouble(4,product.getQuality());
+            preparedStatement.setDouble(4,product.getQuantity());
             preparedStatement.setInt(5,product.getIdCategory());
             preparedStatement.setInt(6,product.getId());
             int row=preparedStatement.executeUpdate();
