@@ -21,4 +21,14 @@ public class CartDto {
           productMap.put(product,1);
       }
     }
+    public void removeProduct(Product product) {
+        if (productMap.containsKey(product)) {
+            int quantity = productMap.get(product);
+            if (quantity > 1) {
+                productMap.put(product, quantity - 1); // Giảm số lượng nếu > 1
+            } else {
+                productMap.remove(product); // Xóa khỏi giỏ nếu chỉ còn 1 sản phẩm
+            }
+        }
+    }
 }

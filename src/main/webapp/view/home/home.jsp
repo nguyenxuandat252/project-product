@@ -5,6 +5,7 @@
   Time: 11:22 CH
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -143,7 +144,7 @@
                     <img src="" alt="Hình ảnh">
                 </p>
                 <p>${product.getName()}</p>
-                <p>Giá: ${product.getPrice()} VND</p>
+                <p><fmt:formatNumber value="${product.getPrice()}" type="currency" currencySymbol="₫"/></p>
                 <p>
                     <a href="/home/cart?id=${product.getId()}">Thêm giỏ hàng</a>
                         <%--                <button class="btn btn-primary">Đặt hàng</button>--%>

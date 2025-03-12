@@ -1,11 +1,10 @@
 package com.example.projectproduct.repository;
 
+import com.example.projectproduct.dto.CartDto;
 import com.example.projectproduct.model.Product;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Map;
 
 public class OrderUserRepository implements IOrderUserRepository {
 
@@ -46,5 +45,72 @@ public class OrderUserRepository implements IOrderUserRepository {
             return false;
         }
 
+    }
+
+    @Override
+    public void placeOrder(int userId, CartDto cartDto) {
+        Connection connection = BaseRepository.getConnectDB();
+        try {
+            connection.setAutoCommit(false); // Bắt đầu transaction
+
+            // 1️⃣ Tạo đơn hàng mới trong bảng `order_user`
+            String orderQuery = "INSERT INTO order_user (id_user) VALUES (?)";
+            PreparedStatement orderStmt = connection.prepareStatement(orderQuery, Statement.RETURN_GENERATED_KEYS);
+            orderStmt.setInt(1, userId);
+            orderStmt.executeUpdate();
+
+            // Lấy ID của đơn hàng vừa tạo
+            ResultSet rs = orderStmt.getGeneratedKeys();
+            int orderId = -1;
+            if (rs.next()) {
+                orderId = rs.getInt(1);
+            }
+
+            // 2️⃣ Lưu chi tiết đơn hàng vào bảng `order_detail`
+            String orderDetailQuery = "INSERT INTO order_detail (id_product, id_order_user, quantity) VALUES (?, ?, ?)";
+            PreparedStatement orderDetailStmt = connection.prepareStatement(orderDetailQuery);
+
+            for (Map.Entry<Product, Integer> entry : cartDto.getProductMap().entrySet()) {
+                orderDetailStmt.setInt(1, entry.getKey().getId());
+                orderDetailStmt.setInt(2, orderId);
+                orderDetailStmt.setInt(3, entry.getValue());
+                orderDetailStmt.executeUpdate();
+            }
+
+            connection.commit(); // Xác nhận transaction
+        } catch (SQLException e) {
+            try {
+                connection.rollback(); // Rollback nếu có lỗi
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.setAutoCommit(true); // Bật lại chế độ auto commit
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public int getIdUser(String username) {
+        Connection connection = BaseRepository.getConnectDB();
+        int id = 0;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select id from user where username = ? ;");
+            preparedStatement.setString(1,username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                id = resultSet.getInt("id");
+                return id;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
     }
 }
