@@ -1,6 +1,7 @@
 package com.example.projectproduct.controller;
 
 import com.example.projectproduct.dto.ProductDto;
+import com.example.projectproduct.model.Category;
 import com.example.projectproduct.model.Product;
 import com.example.projectproduct.service.IProductService;
 import com.example.projectproduct.service.ProductService;
@@ -25,9 +26,13 @@ public class ProductController extends HttpServlet {
         }
         switch (action) {
             case "create":
+              List<Category> category = productService.getCategory();
+                req.setAttribute("category",category);
                 req.getRequestDispatcher("/view/product/create.jsp").forward(req, resp);
                 break;
             case "update":
+                List<Category> listCategory = productService.getCategory();
+                req.setAttribute("listCategory",listCategory);
                 String findId = req.getParameter("id");
                 if (findId != null) {
                     int id = Integer.parseInt(findId);

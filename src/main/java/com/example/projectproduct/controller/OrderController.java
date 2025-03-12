@@ -21,13 +21,18 @@ public class OrderController extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "delete":
-                String checkId = req.getParameter("id");
-                if (checkId != null) {
-                    int id = Integer.parseInt(checkId);
-                    orderService.deleteOrder(id);
-                    req.setAttribute("order", orderService.getOrder());
+            case "detail":
+                String check = req.getParameter("id");
+                if (check!=null){
+                    int id = Integer.parseInt(check);
+                    req.setAttribute("orderDetail",orderService.getOrderDetail(id));
                 }
+                req.getRequestDispatcher("/view/order/detail.jsp").forward(req,resp);
+                break;
+            case "update":
+                int id = Integer.parseInt(req.getParameter("id"));
+                orderService.updateOrder(id);
+                req.setAttribute("order", orderService.getOrder());
                 resp.sendRedirect("/order");
                 break;
             default:
@@ -44,14 +49,10 @@ public class OrderController extends HttpServlet {
         }
         switch (action) {
             case "update":
-                int id = Integer.parseInt(req.getParameter("id"));
-                orderService.updateOrder(id);
-                req.setAttribute("order", orderService.getOrder());
-                resp.sendRedirect("/order");
+                break;
+            case "detail":
                 break;
             default:
-                req.setAttribute("order", orderService.getOrder());
-                req.getRequestDispatcher("/view/order/list.jsp").forward(req, resp);
         }
     }
 }
