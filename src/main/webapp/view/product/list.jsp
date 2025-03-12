@@ -7,7 +7,7 @@
 </head>
 <c:import url="/navbar.jsp"></c:import>
 <body>
-<a href="/order"><button>Xem danh sách order</button></a>
+<a href="/order"><button class="btn btn-primary btn-sm btn-lg px-4">Xem danh sách order</button></a>
 <a href="/admin?action=create"><button class="btn btn-primary btn-sm btn-lg px-4">CREATE</button></a>
 <h1 style="text-align: center">Danh Sách Sản Phẩm</h1>
 <table id="tableProduct" class="table table-primary">
@@ -17,7 +17,7 @@
         <th>Name</th>
         <th>Price</th>
         <th>Description</th>
-        <th>Quality</th>
+        <th>Quantity</th>
         <th>Category</th>
         <th>UPDATE</th>
         <th>DELETE</th>
@@ -30,7 +30,7 @@
             <td>${product.getName()}</td>
             <td>${product.getPrice()}</td>
             <td>${product.getDescription()}</td>
-            <td>${product.getQuality()}</td>
+            <td>${product.getQuantity()}</td>
             <td>${product.getNameCategory()}</td>
             <td>
                 <a href="/admin?action=update&id=${product.getId()}">
