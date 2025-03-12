@@ -5,10 +5,82 @@
 <head>
     <title>Title</title>
     <c:import url="/layout.jsp"></c:import>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0d6efd;
+            font-weight: bold;
+        }
+
+        .btn {
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #0d6efd;
+            border: none;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+            border: none;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+        }
+
+        table {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #0d6efd;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        td {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .modal-header {
+            background-color: #dc3545;
+            color: white;
+        }
+
+
+    </style>
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+<nav class="navbar navbar-expand-lg navbar-primary  mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Quản Lý Sản Phẩm</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
