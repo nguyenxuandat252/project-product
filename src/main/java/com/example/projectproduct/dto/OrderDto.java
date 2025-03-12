@@ -10,6 +10,7 @@ public class OrderDto {
     private int quantity;
     private double price;
     private String status;
+    private double sumMonney;
 
     public OrderDto() {
     }
@@ -35,6 +36,32 @@ public class OrderDto {
         this.nameProduct = nameProduct;
         this.price = price;
         this.status = status;
+    }
+
+    public OrderDto(int id, String name, String phoneNumber, String address, String date, String nameProduct, double price, String status) {
+        this.id = id;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.date = date;
+        this.nameProduct = nameProduct;
+        this.price = price;
+        this.status = status;
+    }
+    public OrderDto(int id, String nameProduct, double price, int quantity,double sumMonney) {
+        this.id = id;
+        this.nameProduct = nameProduct;
+        this.quantity = quantity;
+        this.price = price;
+        this.sumMonney = sumMonney;
+    }
+
+    public double getSumMonney() {
+        return sumMonney;
+    }
+
+    public void setSumMonney(double sumMonney) {
+        this.sumMonney = sumMonney;
     }
 
     public int getId() {
