@@ -7,5 +7,6 @@
 </head>
 <body>
 <c:redirect url="/admin"></c:redirect>
+<h2>Đạt tào lao</h2>
 </body>
 </html>
