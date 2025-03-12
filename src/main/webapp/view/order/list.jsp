@@ -13,11 +13,13 @@
     <c:import url="/layout.jsp"></c:import>
 </head>
 <body>
+<c:import url="/navbar.jsp"></c:import>
 <table class="table table-primary">
     <tr>
         <th>ID</th>
         <th>Ngày đặt</th>
         <th>Trạng thái</th>
+        <th>Hành động</th>
         <th>Hành động</th>
     </tr>
     <c:forEach var="order" items="${order}">
@@ -27,9 +29,11 @@
             <td>${order.status}</td>
             <td>
                 <form action="/order?action=update&id=${order.id}" method="post">
-                    <button class="btn btn-primary">Xuất hàng</button>
+                    <button class="btn btn-primary btn-sm">Xuất hàng</button>
                 </form>
-                <button type="button" onclick="deleteId('${order.getId()}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            </td>
+            <td>
+                <button type="button" onclick="deleteId('${order.getId()}')" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     DELETE
                 </button>
             </td>
