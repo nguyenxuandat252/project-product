@@ -1,6 +1,7 @@
 package com.example.projectproduct.service;
 
 import com.example.projectproduct.dto.ProductDto;
+import com.example.projectproduct.model.Category;
 import com.example.projectproduct.model.Product;
 import com.example.projectproduct.repository.BaseRepository;
 import com.example.projectproduct.repository.IProductRepository;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService implements IProductService {
@@ -67,5 +69,25 @@ public class ProductService implements IProductService {
             throw new RuntimeException(e);
         }
         return product;
+    }
+
+    @Override
+    public List<Category> getCategory() {
+        Connection connection = BaseRepository.getConnectDB();
+        List<Category>  categoryList= new ArrayList<>();
+        String query = "select * from category";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String name =resultSet.getString("name");
+                Category category= new Category(id,name);
+                categoryList.add(category);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return categoryList;
     }
 }

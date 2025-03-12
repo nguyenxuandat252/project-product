@@ -22,24 +22,69 @@
     </style>
 </head>
 <body>
-<c:import url="/navbar.jsp"></c:import>
-<div class="container d-flex justify-content-center align-items-start mt-5" style="height: 90vh;">
-    <div class="card p-4 shadow-lg" style="width: 400px;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Quản Lý Đơn Hàng</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/admin">Trang Chủ</a>
+                </li>
+                <li class="nav-item">
+                </li>
+            </ul>
+            <form class="d-flex" action="/admin" method="post">
+                <button class="btn btn-outline-light" type="submit">Quay lại</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="card p-4 shadow-lg" style="width: 400px; border-radius: 15px;">
+        <h3 class="text-center text-primary mb-3">Thêm Sản Phẩm</h3>
         <form action="/admin?action=create" method="post">
-            <input class="form-control mb-2" hidden="hidden" name="id" placeholder="Nhập id">
-            <input class="form-control mb-2" name="name" id="name" onblur="checkName()" placeholder="Nhập tên">
-            <small id="errorName"></small>
-            <input class="form-control mb-2" name="price" id="price" onblur="checkPrice()" placeholder="Nhập giá">
-            <small id="errorPrice"></small>
-            <input class="form-control mb-2" name="description" onblur="checkDescription()" placeholder="Nhập mô tả">
-            <small id="errorDescription"></small>
-            <input class="form-control mb-2" name="quantity" id="quality" onblur="checkQuality()"
-                   placeholder="Nhập số lượng">
-            <small id="errorQuality"></small>
-            <input class="form-control mb-2" name="id_category" id="idCategory" onblur="checkCategory()"
-                   placeholder="Nhập id phụ kiện">
-            <small id="errorIdCategory"></small>
-            <button class="btn btn-primary w-100">Lưu</button>
+            <input class="form-control mb-3" type="hidden" name="id">
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Tên sản phẩm</label>
+                <input class="form-control" name="name" id="name" onblur="checkName()" placeholder="Nhập tên">
+                <small id="errorName" class="text-danger"></small>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Giá</label>
+                <input class="form-control" name="price" id="price" onblur="checkPrice()" placeholder="Nhập giá">
+                <small id="errorPrice" class="text-danger"></small>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Mô tả</label>
+                <input class="form-control" name="description" id="description" onblur="checkDescription()" placeholder="Nhập mô tả">
+                <small id="errorDescription" class="text-danger"></small>
+            </div>
+
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Số lượng</label>
+                <input class="form-control" name="quantity" id="quantity" onblur="checkQuality()" placeholder="Nhập số lượng">
+                <small id="errorQuality" class="text-danger"></small>
+            </div>
+
+            <div class="mb-3">
+                <label for="idCategory" class="form-label"> Danh Mục</label>
+                <select class="form-control" name="id_category" id="idCategory">
+                    <option value="">-- Chọn danh mục --</option>
+                    <c:forEach var="category" items="${category}">
+                        <option value="${category.id}">${category.name}</option>
+                    </c:forEach>
+                </select>
+                <small id="errorIdCategory" class="text-danger"></small>
+            </div>
+
+            <button class="btn btn-primary w-100 fw-bold">Lưu</button>
         </form>
     </div>
 </div>
@@ -72,7 +117,7 @@
     }
 
     function checkQuality() {
-        let quality = document.getElementById("quality").value;
+        let quality = document.getElementById("quantity").value;
         if (quality <= 0 || quality === "") {
             document.getElementById("errorQuality").innerText = "Vui lòng nhập lại"
         } else {
@@ -82,7 +127,7 @@
 
     function checkCategory() {
         let category = document.getElementById("idCategory").value;
-        if (category <= 0 || category === "" || category > 4) {
+        if ( category === "") {
             document.getElementById("errorIdCategory").innerText = "Vui lòng nhập lại"
         } else {
             document.getElementById("errorIdCategory").innerText = ""
