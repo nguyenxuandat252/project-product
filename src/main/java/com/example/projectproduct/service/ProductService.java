@@ -61,8 +61,9 @@ public class ProductService implements IProductService {
                 double price = resultSet.getDouble("price");
                 String description = resultSet.getString("description");
                 int quality = resultSet.getInt("quantity");
+                String url = resultSet.getString("image_Url");
                 int releaseDate = resultSet.getInt("id_category");
-                product = new Product(findId,name,price,description,quality,releaseDate);
+                product = new Product(findId,name,price,description,quality,url,releaseDate);
                 break;
             }
         } catch (SQLException e) {

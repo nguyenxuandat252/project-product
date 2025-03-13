@@ -13,103 +13,129 @@
 <head>
     <title>Title</title>
     <c:import url="/layout.jsp"></c:import>
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
+<%--   <style>--%>
+<%--       /* Container */--%>
+<%--       .container {--%>
+<%--           background-color: white;--%>
+<%--           padding: 30px;--%>
+<%--           border-radius: 12px;--%>
+<%--           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);--%>
+<%--       }--%>
 
-        .container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
+<%--       /* Tiêu đề */--%>
+<%--       h1 {--%>
+<%--           text-align: center;--%>
+<%--           color: #007bff;--%>
+<%--           font-weight: bold;--%>
+<%--           text-transform: uppercase;--%>
+<%--       }--%>
 
-        h1 {
-            text-align: center;
-            color: #0d6efd;
-            font-weight: bold;
-        }
+<%--       /* Bảng */--%>
+<%--       table {--%>
+<%--           width: 100%;--%>
+<%--           border-collapse: collapse;--%>
+<%--           background-color: white;--%>
+<%--           border-radius: 12px;--%>
+<%--           overflow: hidden;--%>
+<%--           box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);--%>
+<%--       }--%>
 
-        .btn {
-            border-radius: 20px;
-            font-weight: bold;
-        }
+<%--       /* Tiêu đề bảng */--%>
+<%--       thead {--%>
+<%--           background-color: #343a40; /* Màu xám đậm */--%>
+<%--           color: white;--%>
+<%--           font-weight: bold;--%>
+<%--       }--%>
 
-        .btn-primary {
-            background-color: #0d6efd;
-            border: none;
-        }
+<%--       /* Ô tiêu đề */--%>
+<%--       th {--%>
+<%--           padding: 15px;--%>
+<%--           text-align: center;--%>
+<%--           font-size: 16px;--%>
+<%--       }--%>
 
-        .btn-success {
-            background-color: #28a745;
-            border: none;
-        }
+<%--       /* Ô dữ liệu */--%>
+<%--       td {--%>
+<%--           padding: 12px;--%>
+<%--           text-align: center;--%>
+<%--           font-size: 15px;--%>
+<%--       }--%>
 
-        .btn-warning {
-            background-color: #ffc107;
-            border: none;
-        }
+<%--       /* Hàng xen kẽ */--%>
+<%--       tr:nth-child(even) {--%>
+<%--           background-color: #f8f9fa;--%>
+<%--       }--%>
 
-        .btn-danger {
-            background-color: #dc3545;
-            border: none;
-        }
+<%--       /* Hiệu ứng hover */--%>
+<%--       tr:hover {--%>
+<%--           background-color: #e3f2fd;--%>
+<%--           transform: scale(1.01);--%>
+<%--           transition: 0.3s;--%>
+<%--       }--%>
 
-        table {
-            width: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-        }
+<%--       /* Nút bấm */--%>
+<%--       .btn {--%>
+<%--           border-radius: 8px;--%>
+<%--           font-weight: bold;--%>
+<%--           padding: 8px 16px;--%>
+<%--           transition: 0.3s;--%>
+<%--       }--%>
 
-        th {
-            background-color: #0d6efd;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
+<%--       /* Chỉnh màu nút */--%>
+<%--       .btn-primary {--%>
+<%--           background-color: #007bff;--%>
+<%--           border: none;--%>
+<%--       }--%>
 
-        td {
-            text-align: center;
-            padding: 10px;
-        }
+<%--       .btn-primary:hover {--%>
+<%--           background-color: #0056b3;--%>
+<%--           transform: scale(1.05);--%>
+<%--       }--%>
 
-        .table-responsive {
-            overflow-x: auto;
-        }
+<%--       .btn-danger {--%>
+<%--           background-color: #dc3545;--%>
+<%--           border: none;--%>
+<%--       }--%>
 
-        .modal-header {
-            background-color: #dc3545;
-            color: white;
-        }
+<%--       .btn-danger:hover {--%>
+<%--           background-color: #b52a37;--%>
+<%--           transform: scale(1.05);--%>
+<%--       }--%>
 
-    </style>
+<%--       /* Thanh điều hướng */--%>
+<%--       .navbar {--%>
+<%--           background-color: #007bff !important;--%>
+<%--           padding: 12px;--%>
+<%--       }--%>
+
+<%--   </style>--%>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Quản Lý Đơn Hàng</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/admin">Trang Chủ</a>
-                </li>
-                <li class="nav-item">
-                </li>
-            </ul>
-            <form class="d-flex" action="/admin" method="post">
-                <button class="btn btn-outline-light" type="submit">Quay lại</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<c:import url="../../navbar.jsp"></c:import>
+<%--<nav class="navbar navbar-expand-lg navbar-light bg-primary">--%>
+<%--    <div class="container-fluid">--%>
+
+<%--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"--%>
+<%--                data-bs-target="#navbarNav"--%>
+<%--                aria-controls="navbarNav" aria-expanded="false"--%>
+<%--                aria-label="Toggle navigation">--%>
+<%--            <span class="navbar-toggler-icon"></span>--%>
+<%--        </button>--%>
+<%--        <div class="collapse navbar-collapse" id="navbarNav">--%>
+<%--            <ul class="navbar-nav me-auto">--%>
+<%--                <li class="nav-item">--%>
+<%--                    <a class="nav-link active" href="/admin"><img width="50" height="50" src="https://img.icons8.com/ios/50/home--v1.png" alt="home--v1"></a>--%>
+<%--                </li>--%>
+<%--            </ul>--%>
+<%--            <a class="navbar-brand w-100 text-center text-white" href="#">Quản Lý Đơn Hàng</a>--%>
+<%--            <form class="d-flex" action="/admin" method="post">--%>
+<%--                <button class="btn btn-outline-dark btn-sm px-3 py-1" type="submit">Quay lại</button>--%>
+<%--            </form>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</nav>--%>
 <table id="tableOrder" class="table table-striped table-hover align-middle text-center">
-    <thead class="table-dark">
+    <thead>
     <tr>
         <th>ID</th>
         <th>Tên khách hàng</th>
@@ -138,7 +164,16 @@
                 <a class="btn btn-primary btn-sm" href="/order?action=detail&id=${order.id}">Chi tiết</a>
             </td>
             <td>
-                <button type="button" class="btn btn-danger btn-sm" onclick="deleteId('${order.id}')" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Xuất hàng</button>
+                <c:if test="${order.status ne 'Đã xuất hàng'}">
+                    <button type="button" class="btn btn-primary btn-sm"
+                            onclick="deleteId('${order.id}')"
+                            data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+                        Xuất hàng
+                    </button>
+                </c:if>
+                <c:if test="${order.status eq 'Đã xuất hàng'}">
+                <button class="btn btn-primary btn-sm">Đã xuất hàng</button>
+                </c:if>
             </td>
         </tr>
     </c:forEach>
@@ -159,7 +194,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    <button type="submit" class="btn btn-danger">Xóa</button>
+                    <button type="submit" class="btn btn-danger">Xác Nhận</button>
                 </div>
             </form>
         </div>

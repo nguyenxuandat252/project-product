@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 3/12/2025
-  Time: 12:32 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -14,27 +8,29 @@
     <c:import url="/layout.jsp"></c:import>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Quản Lý Đơn Hàng</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/admin">Trang Chủ</a>
-                </li>
-                <li class="nav-item">
-                </li>
-            </ul>
-            <form class="d-flex" action="/order" method="get">
-                <button class="btn btn-outline-light" type="submit">Quay lại</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<c:import url="../../navbar.jsp"></c:import>
+<%--<nav class="navbar navbar-expand-lg navbar-light bg-primary">--%>
+<%--    <div class="container-fluid">--%>
+
+<%--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"--%>
+<%--                data-bs-target="#navbarNav"--%>
+<%--                aria-controls="navbarNav" aria-expanded="false"--%>
+<%--                aria-label="Toggle navigation">--%>
+<%--            <span class="navbar-toggler-icon"></span>--%>
+<%--        </button>--%>
+<%--        <div class="collapse navbar-collapse" id="navbarNav">--%>
+<%--            <ul class="navbar-nav me-auto">--%>
+<%--                <li class="nav-item">--%>
+<%--                    <a class="nav-link active" href="/admin"><img width="50" height="50" src="https://img.icons8.com/ios/50/home--v1.png" alt="home--v1"></a>--%>
+<%--                </li>--%>
+<%--            </ul>--%>
+<%--            <a class="navbar-brand w-100 text-center text-white" href="#">Chi Tiết Đơn Hàng</a>--%>
+<%--            <form class="d-flex" action="/order" method="get">--%>
+<%--                <button class="btn btn-outline-dark btn-sm px-3 py-1" type="submit">Quay lại</button>--%>
+<%--            </form>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</nav>--%>
 <table class="table table-striped table-hover align-middle text-center">
     <thead>
     <tr>
@@ -63,11 +59,18 @@
     </c:forEach>
     </tbody>
 </table>
-
-<button type="button" class="btn btn-danger btn-sm" onclick="deleteId('${orderDetail.get(0).idOrder}')" data-bs-toggle="modal"
-        data-bs-target="#confirmDeleteModal">Xuất hàng
-</button>
-
+<div class="text-center mt-3">
+<c:if test="${orderDetail.get(0).status ne 'Đã xuất hàng'}">
+    <button type="button"class="btn btn-primary btn-sm"
+            onclick="deleteId('${orderDetail.get(0).idOrder}')"
+            data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+        Xuất hàng
+    </button>
+</c:if>
+<c:if test="${orderDetail.get(0).status eq 'Đã xuất hàng'}">
+    <button class="btn btn-primary btn-sm">Đã xuất hàng</button>
+</c:if>
+</div>
 
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
     <div class="modal-dialog">
