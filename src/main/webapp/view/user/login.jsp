@@ -9,93 +9,91 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <c:import url="../../layout.jsp"></c:import>
     <title>Login</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
-            display: flex;
-            flex-direction: column; /* Căn theo chiều dọc */
-            align-items: center; /* Căn giữa theo chiều ngang */
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
         }
 
+        /* Đảm bảo khoảng cách giữa navbar và nội dung */
         h1 {
+            margin-top: 100px; /* Điều chỉnh khoảng cách từ navbar */
             text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-            font-size: 28px;
         }
 
-        form {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Định dạng form */
+        #login  {
             width: 300px;
+            margin: 0 auto; /* Căn giữa form */
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
 
-        p {
-            color: red;
-            font-weight: bold;
-        }
-
-        label {
+        /* Định dạng nhãn và input */
+        #login  label {
             display: block;
             font-weight: bold;
-            margin: 10px 0 5px;
-            text-align: left;
+            margin-top: 10px;
         }
 
-        input[type="text"], input[type="password"] {
+        #login  input[type="text"],
+        #login  input[type="password"] {
             width: 100%;
             padding: 8px;
-            margin-bottom: 10px;
+            margin: 5px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        input[type="submit"] {
+        /* Định dạng nút đăng nhập */
+        #login  input[type="submit"] {
+            width: 100%;
             background-color: #007bff;
             color: white;
             border: none;
             padding: 10px;
-            width: 100%;
+            margin-top: 10px;
             border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
+            font-size: 16px;
         }
 
-        input[type="submit"]:hover {
+        #login input[type="submit"]:hover {
             background-color: #0056b3;
         }
 
-        a {
+        /* Định dạng link đăng ký */
+        #login a {
             display: block;
-            margin: 10px 0;
-            color: #007bff;
+            margin-top: 10px;
             text-decoration: none;
+            color: #007bff;
         }
 
-        a:hover {
+        #login a:hover {
             text-decoration: underline;
         }
 
     </style>
 </head>
 <body>
-<h1>Login</h1>
-<form action="/login" method="post">
+<c:import url="../../navbar.jsp"></c:import>
+<h1>Đăng nhập</h1>
+<form id="login" action="/login" method="post">
     <p>${mess}</p>
-    <label>username</label>
+    <label>Tên đăng nhập</label>
     <input type="text" name="username"><br>
-    <label>username</label>
+    <label>Mật khẩu</label>
     <input type="password" name="password"><br>
-    <a href="/register">register now</a>
-    <input type="submit" value="Login">
+    <a href="/register">Đăng ký ngay</a>
+    <input type="submit" value="Đăng nhập">
 </form>
 </body>
 </html>
