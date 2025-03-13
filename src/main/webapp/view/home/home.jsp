@@ -212,7 +212,7 @@
         <c:forEach var="product" items="${productList}">
             <div class="product-card">
                 <p>
-                    <img src="${product.getImageUrl()}" alt="Hình ảnh">
+                    <img src="${product.getImageUrl()}" title="${product.getDescription()}">
                 </p>
                 <p>${product.getName()}</p>
                 <p><fmt:formatNumber value="${product.getPrice()}" type="currency" currencySymbol="₫"/></p>
@@ -264,6 +264,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
