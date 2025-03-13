@@ -11,6 +11,7 @@
 <html>
 <head>
     <title>Order</title>
+    <c:import url="../../layout.jsp"></c:import>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -77,8 +78,8 @@
     </style>
 </head>
 <body>
+<c:import url="../../navbar.jsp"></c:import>
 <h2>${message}</h2>
-
 <c:choose>
     <c:when test="${not empty cart.getProductMap()}">
         <table>

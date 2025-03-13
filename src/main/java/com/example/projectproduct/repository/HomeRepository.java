@@ -18,7 +18,7 @@ public class HomeRepository implements IHomeRepository{
         List<ProductDto> productDtos = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select p.id,p.name,p.price,p.description,p.quantity,c.name from product p left join category c on p.id_category = c.id;");
+            PreparedStatement preparedStatement = connection.prepareStatement("select p.id,p.name,p.price,p.description,p.quantity,p.image_Url,p.id_category from product p left join category c on p.id_category = c.id;");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -26,8 +26,9 @@ public class HomeRepository implements IHomeRepository{
                 double price = resultSet.getDouble("price");
                 String description = resultSet.getString("description");
                 int quantity = resultSet.getInt("quantity");
-                String nameCategory = resultSet.getString("name");
-                ProductDto productDto = new ProductDto(id,name,price,description,quantity,nameCategory);
+                int id_category = resultSet.getInt("id_category");
+                String imageUrl = resultSet.getString("image_Url");
+                ProductDto productDto = new ProductDto(id,name,price,description,quantity,imageUrl,id_category);
                 productDtos.add(productDto);
             }
         } catch (SQLException e) {
@@ -41,7 +42,7 @@ public class HomeRepository implements IHomeRepository{
         List<ProductDto> productDtos = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select p.id,p.name,p.price,p.description,p.quantity,c.name from product p left join category c on p.id_category = c.id WHERE LOWER(p.description) LIKE '%laptop%';");
+            PreparedStatement preparedStatement = connection.prepareStatement("select p.id,p.name,p.price,p.description,p.quantity,p.image_Url,p.id_category from product p left join category c on p.id_category = c.id WHERE LOWER(p.description) LIKE '%laptop%';");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -49,8 +50,9 @@ public class HomeRepository implements IHomeRepository{
                 double price = resultSet.getDouble("price");
                 String description = resultSet.getString("description");
                 int quantity = resultSet.getInt("quantity");
-                String nameCategory = resultSet.getString("name");
-                ProductDto productDto = new ProductDto(id,name,price,description,quantity,nameCategory);
+                int id_category = resultSet.getInt("id_category");
+                String imageUrl = resultSet.getString("image_Url");
+                ProductDto productDto = new ProductDto(id,name,price,description,quantity,imageUrl,id_category);
                 productDtos.add(productDto);
             }
         } catch (SQLException e) {
@@ -64,7 +66,7 @@ public class HomeRepository implements IHomeRepository{
         List<ProductDto> productDtos = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select p.id,p.name,p.price,p.description,p.quantity,c.name from product p left join category c on p.id_category = c.id WHERE LOWER(p.description) LIKE '%Điện thoại%';");
+            PreparedStatement preparedStatement = connection.prepareStatement("select p.id,p.name,p.price,p.description,p.quantity,p.image_Url,p.id_category from product p left join category c on p.id_category = c.id WHERE LOWER(p.description) LIKE '%Điện thoại%';");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -72,8 +74,9 @@ public class HomeRepository implements IHomeRepository{
                 double price = resultSet.getDouble("price");
                 String description = resultSet.getString("description");
                 int quantity = resultSet.getInt("quantity");
-                String nameCategory = resultSet.getString("name");
-                ProductDto productDto = new ProductDto(id,name,price,description,quantity,nameCategory);
+                int id_category = resultSet.getInt("id_category");
+                String imageUrl = resultSet.getString("image_Url");
+                ProductDto productDto = new ProductDto(id,name,price,description,quantity,imageUrl,id_category);
                 productDtos.add(productDto);
             }
         } catch (SQLException e) {
@@ -87,22 +90,17 @@ public class HomeRepository implements IHomeRepository{
         List<OrderDto> orderDtos = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT \n" +
-                    "    ou.date,\n" +
-                    "    ou.status,\n" +
-                    "    p.name AS product_name,\n" +
-                    "    p.price,\n" +
-                    "    od.quantity,\n" +
-                    "    (p.price * od.quantity) AS total_price,\n" +
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT ou.date,ou.status,p.name AS product_name,p.price,od.quantity,(p.price * od.quantity) AS total_price,c.name AS category_name\n" +
                     "FROM order_user ou\n" +
                     "JOIN order_detail od ON ou.id = od.id_order_user\n" +
                     "JOIN product p ON od.id_product = p.id\n" +
-                    "WHERE ou.id_user = 2;");
+                    "JOIN category c ON p.id_category = c.id\n" +
+                    "WHERE ou.id_user = 2");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String date = resultSet.getString("date");
                 String status = resultSet.getString("status");
-                String name = resultSet.getString("name");
+                String name = resultSet.getString("product_name");
                 double price = resultSet.getDouble("price");
                 int quantity = resultSet.getInt("quantity");
                 double sumMoney = resultSet.getDouble("total_price");
