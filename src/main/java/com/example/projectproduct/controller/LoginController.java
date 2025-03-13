@@ -32,6 +32,7 @@ public class LoginController extends HttpServlet {
         if(check){
             HttpSession session = req.getSession();
             session.setAttribute("username", username);
+            session.setAttribute("id", loginService.getId(username,password));
             session.setAttribute("role", loginService.getRole(username,password));
             resp.sendRedirect("/home");
         }else {

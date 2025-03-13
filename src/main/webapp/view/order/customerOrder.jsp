@@ -54,7 +54,7 @@
     </style>
 </head>
 <body>
-<h1>Danh sách đơn hàng</h1>
+<h1>${mess}</h1>
     <table>
         <tr>
             <th>Date</th>

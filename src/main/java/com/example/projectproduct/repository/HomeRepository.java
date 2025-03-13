@@ -86,7 +86,7 @@ public class HomeRepository implements IHomeRepository{
     }
 
     @Override
-    public List<OrderDto> getYourorder() {
+    public List<OrderDto> getYourorder(int id) {
         List<OrderDto> orderDtos = new ArrayList<>();
         Connection connection = BaseRepository.getConnectDB();
         try {
@@ -95,7 +95,8 @@ public class HomeRepository implements IHomeRepository{
                     "JOIN order_detail od ON ou.id = od.id_order_user\n" +
                     "JOIN product p ON od.id_product = p.id\n" +
                     "JOIN category c ON p.id_category = c.id\n" +
-                    "WHERE ou.id_user = 2");
+                    "WHERE ou.id_user = ?");
+            preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 String date = resultSet.getString("date");
