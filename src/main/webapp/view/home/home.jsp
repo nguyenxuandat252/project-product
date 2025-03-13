@@ -55,11 +55,6 @@
             background-color: #495057;
         }
 
-        /* Hiệu ứng khi hover menu cấp 2 */
-        .dropdown-submenu {
-            position: relative;
-        }
-
         .dropdown-submenu .dropdown-menu {
             top: 0;
             left: 100%;
@@ -160,8 +155,18 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
 
+                <c:if test="${role eq 'admin'}">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/home">Home</a>
+                        <a class="nav-link active" href="/home">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin">Quản lý sản phẩm</a>
+                    </li>
+                </c:if>
+
+                <c:if test="${role ne 'admin'}">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/home">Trang chủ</a>
                     </li>
 
                     <!-- Dropdown Sản phẩm -->
@@ -185,6 +190,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/viewOrders?action=customerOrder">Đơn hàng</a>
                     </li>
+                </c:if>
 
             </ul>
 
