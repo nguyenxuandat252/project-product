@@ -14,11 +14,13 @@
     <c:import url="/layout.jsp"></c:import>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Quản Lý Đơn Hàng</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Chi Tiết Đơn Hàng</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -26,11 +28,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/admin">Trang Chủ</a>
                 </li>
-                <li class="nav-item">
-                </li>
             </ul>
             <form class="d-flex" action="/order" method="get">
-                <button class="btn btn-outline-light" type="submit">Quay lại</button>
+                <button class="btn btn-outline-dark" type="submit">Quay lại</button>
             </form>
         </div>
     </div>
@@ -63,11 +63,16 @@
     </c:forEach>
     </tbody>
 </table>
-
+<c:if test="'${orderDetail.get(0).status ne 'Đã xuất hàng'}">
+    <button type="button" class="btn btn-danger btn-sm"
+            onclick="deleteId('${orderDetail.get(0).idOrder}')"
+            data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+        Xuất hàng
+    </button>
+</c:if>
 <button type="button" class="btn btn-danger btn-sm" onclick="deleteId('${orderDetail.get(0).idOrder}')" data-bs-toggle="modal"
         data-bs-target="#confirmDeleteModal">Xuất hàng
 </button>
-
 
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
     <div class="modal-dialog">

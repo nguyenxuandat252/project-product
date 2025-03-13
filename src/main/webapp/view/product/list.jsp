@@ -6,42 +6,82 @@
     <title>Title</title>
     <c:import url="/layout.jsp"></c:import>
     <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
-
+        /* Container */
         .container {
             background-color: white;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
+        /* Tiêu đề */
         h1 {
             text-align: center;
-            color: #0d6efd;
+            color: #007bff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Bảng */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tiêu đề bảng */
+        thead {
+            background-color: #343a40; /* Màu xám đậm */
+            color: white;
             font-weight: bold;
         }
 
+        /* Ô tiêu đề */
+        th {
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Ô dữ liệu */
+        td {
+            padding: 12px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        /* Hàng xen kẽ */
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* Hiệu ứng hover */
+        tr:hover {
+            background-color: #e3f2fd;
+            transform: scale(1.01);
+            transition: 0.3s;
+        }
+
+        /* Nút bấm */
         .btn {
-            border-radius: 20px;
+            border-radius: 8px;
             font-weight: bold;
+            padding: 8px 16px;
+            transition: 0.3s;
         }
 
+        /* Chỉnh màu nút */
         .btn-primary {
-            background-color: #0d6efd;
+            background-color: #007bff;
             border: none;
         }
 
-        .btn-success {
-            background-color: #28a745;
-            border: none;
-        }
-
-        .btn-warning {
-            background-color: #ffc107;
-            border: none;
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
         }
 
         .btn-danger {
@@ -49,54 +89,87 @@
             border: none;
         }
 
-        table {
-            width: 100%;
-            border-radius: 10px;
-            overflow: hidden;
+        .btn-danger:hover {
+            background-color: #b52a37;
+            transform: scale(1.05);
         }
 
-        th {
-            background-color: #0d6efd;
-            color: white;
-            text-align: center;
-            padding: 10px;
+        /* Thanh điều hướng */
+        .navbar {
+            background-color: #007bff !important;
+            padding: 12px;
+        }
+        /* Đảm bảo container chiếm toàn bộ màn hình */
+        .container {
+            width: 100vw; /* Chiếm toàn bộ chiều rộng màn hình */
+            max-width: 100vw;
+            padding: 0;
+            margin: 0;
         }
 
-        td {
-            text-align: center;
-            padding: 10px;
-        }
-
+        /* Định dạng bảng */
         .table-responsive {
+            width: 100vw; /* Chiếm toàn bộ chiều rộng */
+            max-width: 100vw;
             overflow-x: auto;
         }
 
-        .modal-header {
-            background-color: #dc3545;
+        /* Định dạng bảng */
+        table {
+            width: 100%; /* Đảm bảo bảng mở rộng hết chiều ngang */
+            border-collapse: collapse;
+        }
+
+        /* Định dạng tiêu đề */
+        thead {
+            background-color: #343a40;
             color: white;
         }
 
+        /* Căn chỉnh cột */
+        th, td {
+            padding: 12px;
+            text-align: center;
+            white-space: nowrap; /* Giữ nội dung không xuống dòng */
+        }
 
+        /* Bỏ viền bo tròn, hiệu ứng bóng */
+        .table-responsive {
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+        }
+        .navbar {
+            margin-bottom: 0; /* Loại bỏ khoảng cách dưới navbar */
+        }
+
+        /* Căn chỉnh bảng gần hơn */
+        .table-container {
+            margin-top: 0; /* Giảm khoảng cách trên bảng */
+            padding-top: 0;
+        }
+
+        /* Đảm bảo bảng bám sát navbar */
+        .table-responsive {
+            margin-top: 0;
+        }
     </style>
 </head>
-<nav class="navbar navbar-expand-lg navbar-primary  mb-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Quản Lý Sản Phẩm</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                 </li>
-                <li class="nav-item">
-                </li>
             </ul>
         </div>
-        <form action="/admin?action=search" method="post" class="mx-0 my-0 d-flex align-items-center ">
-            <input class="form-control form-control-sm w-75  me-2" name="name" placeholder="Tên sản phẩm cần tìm" value="${param.name}">
-            <button class="btn btn-primary btn-sm justify-content-between " style="font-size: 8px">Tìm kiếm</button>
-        </form>
     </div>
 </nav>
 <body class="bg-light">
@@ -105,7 +178,6 @@
         <a href="/order" class="btn btn-primary">Xem danh sách order</a>
         <a href="/admin?action=create" class="btn btn-success">Thêm sản phẩm</a>
     </div>
-    <h1 class="text-center text-primary">Danh Sách Sản Phẩm</h1>
     <div class="table-responsive">
         <table id="tableProduct" class="table table-striped table-hover table-bordered">
             <thead class="table-dark">
@@ -130,10 +202,10 @@
                     <td>${product.getQuantity()}</td>
                     <td>${product.getNameCategory()}</td>
                     <td>
-                        <a href="/admin?action=update&id=${product.getId()}" class="btn btn-warning btn-sm">Cập Nhật</a>
+                        <a href="/admin?action=update&id=${product.getId()}"   class="btn btn-primary btn-sm">Cập Nhật</a>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-danger btn-sm" onclick="deleteId('${product.getId()}')" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Xóa</button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="deleteId('${product.getId()}')" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Xóa</button>
                     </td>
                 </tr>
             </c:forEach>

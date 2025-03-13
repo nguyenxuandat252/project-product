@@ -93,11 +93,13 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Quản Lý Đơn Hàng</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#"> Thêm Mới Đơn Hàng</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -105,11 +107,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="/admin">Trang Chủ</a>
                 </li>
-                <li class="nav-item">
-                </li>
             </ul>
             <form class="d-flex" action="/admin" method="post">
-                <button class="btn btn-outline-light" type="submit">Quay lại</button>
+                <button class="btn btn-outline-dark" type="submit">Quay lại</button>
             </form>
         </div>
     </div>

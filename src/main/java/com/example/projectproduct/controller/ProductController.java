@@ -26,13 +26,13 @@ public class ProductController extends HttpServlet {
         }
         switch (action) {
             case "create":
-              List<Category> category = productService.getCategory();
-                req.setAttribute("category",category);
+                List<Category> category = productService.getCategory();
+                req.setAttribute("category", category);
                 req.getRequestDispatcher("/view/product/create.jsp").forward(req, resp);
                 break;
             case "update":
                 List<Category> listCategory = productService.getCategory();
-                req.setAttribute("listCategory",listCategory);
+                req.setAttribute("listCategory", listCategory);
                 String findId = req.getParameter("id");
                 if (findId != null) {
                     int id = Integer.parseInt(findId);
@@ -47,12 +47,12 @@ public class ProductController extends HttpServlet {
                     int id = Integer.parseInt(checkId);
                     productService.deleteProduct(id);
                 }
-                req.setAttribute("list",productService.getProduct());
-                req.getRequestDispatcher("/view/product/list.jsp").forward(req,resp);
+                req.setAttribute("list", productService.getProduct());
+                req.getRequestDispatcher("/view/product/list.jsp").forward(req, resp);
                 break;
             default:
-                req.setAttribute("list",productService.getProduct());
-                req.getRequestDispatcher("/view/product/list.jsp").forward(req,resp);
+                req.setAttribute("list", productService.getProduct());
+                req.getRequestDispatcher("/view/product/list.jsp").forward(req, resp);
         }
     }
 
@@ -67,9 +67,9 @@ public class ProductController extends HttpServlet {
                 String name = req.getParameter("name");
                 double price = Double.parseDouble(req.getParameter("price"));
                 String description = req.getParameter("description");
-                int  quality = Integer.parseInt(req.getParameter("quantity"));
+                int quality = Integer.parseInt(req.getParameter("quantity"));
                 int idCategory = Integer.parseInt(req.getParameter("id_category"));
-                Product product = new Product(name,price,description,quality,idCategory);
+                Product product = new Product(name, price, description, quality, idCategory);
                 productService.addProduct(product);
                 resp.sendRedirect("/admin");
                 break;
@@ -78,22 +78,22 @@ public class ProductController extends HttpServlet {
                 String nameUpdate = req.getParameter("name");
                 double priceUpdate = Double.parseDouble(req.getParameter("price"));
                 String descriptionUpdate = req.getParameter("description");
-                int  qualityUpdate = Integer.parseInt(req.getParameter("quantity"));
+                int qualityUpdate = Integer.parseInt(req.getParameter("quantity"));
                 int idCategoryUpdate = Integer.parseInt(req.getParameter("id_category"));
-                Product product1 = new Product(idUpdate,nameUpdate,priceUpdate,descriptionUpdate,qualityUpdate,idCategoryUpdate);
-                productService.updateProduct(idUpdate,product1);
-                req.setAttribute("list",productService.getProduct());
-                req.getRequestDispatcher("/view/product/list.jsp").forward(req,resp);
+                Product product1 = new Product(idUpdate, nameUpdate, priceUpdate, descriptionUpdate, qualityUpdate, idCategoryUpdate);
+                productService.updateProduct(idUpdate, product1);
+                req.setAttribute("list", productService.getProduct());
+                req.getRequestDispatcher("/view/product/list.jsp").forward(req, resp);
                 break;
             case "search":
-                String nameSearch =req.getParameter("name");
+                String nameSearch = req.getParameter("name");
                 List<ProductDto> productDtoList = productService.searchProduct(nameSearch);
-                req.setAttribute("list",productDtoList);
-                req.getRequestDispatcher("/view/product/list.jsp").forward(req,resp);
+                req.setAttribute("list", productDtoList);
+                req.getRequestDispatcher("/view/product/list.jsp").forward(req, resp);
                 break;
             default:
-                req.setAttribute("list",productService.getProduct());
-                req.getRequestDispatcher("/view/product/list.jsp").forward(req,resp);
+                req.setAttribute("list", productService.getProduct());
+                req.getRequestDispatcher("/view/product/list.jsp").forward(req, resp);
         }
     }
 }
