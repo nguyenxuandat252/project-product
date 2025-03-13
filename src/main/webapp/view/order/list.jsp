@@ -97,6 +97,8 @@
     $(document).ready(function() {
         $('#tableOrder').DataTable({
             "lengthChange": false,
+            "scrollX": false, // tắt thanh lăn
+            "info": false,// tắt info
             "pageLength": 5,
             "searching": false,
             "language": {
