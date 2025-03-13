@@ -13,7 +13,77 @@
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menu Navigation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
+        /* Định dạng chung cho navbar */
+        .navbar {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Căn chỉnh menu dropdown */
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        /* Định dạng dropdown menu */
+        .dropdown-menu {
+            background-color: #343a40;
+            border: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-item {
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #495057;
+        }
+
+        /* Hiệu ứng khi hover menu cấp 2 */
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-left: 0.5rem;
+            display: none;
+            position: absolute;
+        }
+
+        .dropdown-submenu:hover > .dropdown-menu {
+            display: block;
+        }
+
+        /* Hiệu ứng fade-in cho dropdown */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .product-container {
             display: flex;
             flex-wrap: wrap; /* Cho phép xuống dòng khi vượt quá chiều rộng */
@@ -65,18 +135,9 @@
         .pagination a:hover {
             background-color: #f0f0f0;
         }
-    </style>
-</head>
-<body>
 
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Menu Navigation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    </style>
 </head>
 <body>
 
@@ -84,7 +145,7 @@
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand" href="#">
-            <img src="logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-top">
+            <img src="https://img.favpng.com/22/12/19/web-page-world-wide-web-website-internet-logo-png-favpng-56JhDBu1frEDMakzkv63TuQKM.jpg" alt="Logo" width="40" height="40" class="d-inline-block align-top">
             MyShop
         </a>
 
@@ -96,7 +157,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="/home">Home</a>
                 </li>
 
                 <!-- Dropdown Sản phẩm -->
@@ -141,7 +202,7 @@
         <c:forEach var="product" items="${productList}">
             <div class="product-card">
                 <p>
-                    <img src="" alt="Hình ảnh">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxNTjxa7KgQ7UDj336QEGs82Pf8KPJURnlw&s" alt="Hình ảnh">
                 </p>
                 <p>${product.getName()}</p>
                 <p><fmt:formatNumber value="${product.getPrice()}" type="currency" currencySymbol="₫"/></p>

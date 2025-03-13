@@ -8,6 +8,7 @@ public class ProductDto {
     private int quantity;
     private int idCategory;
     private String nameCategory;
+    private String imageUrl;
 
     public ProductDto() {
     }
@@ -28,6 +29,24 @@ public class ProductDto {
         this.description = description;
         this.quantity = quality;
         this.nameCategory = nameCategory;
+    }
+
+    public ProductDto(String name, double price, String description, int quantity, int idCategory, String imageUrl) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.quantity = quantity;
+        this.idCategory = idCategory;
+        this.imageUrl = imageUrl;
+    }
+    public ProductDto(int id, String name, double price, String description, int quantity,String imageUrl, int idCategory ) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.quantity = quantity;
+        this.imageUrl = imageUrl;
+        this.idCategory = idCategory;
     }
 
     public int getId() {
