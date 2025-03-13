@@ -46,7 +46,14 @@ public class OrderDto {
         this.sumMonney = sumMonney;
     }
 
-
+    public OrderDto( String date, String status, String nameProduct, double price,int quantity, double sumMonney) {
+        this.date = date;
+        this.nameProduct = nameProduct;
+        this.price = price;
+        this.status = status;
+        this.quantity = quantity;
+        this.sumMonney = sumMonney;
+    }
 
     public double getSumMonney() {
         return sumMonney;

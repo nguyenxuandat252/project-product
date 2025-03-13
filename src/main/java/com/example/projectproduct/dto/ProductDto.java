@@ -49,6 +49,7 @@ public class ProductDto {
         this.idCategory = idCategory;
     }
 
+
     public int getId() {
         return id;
     }
