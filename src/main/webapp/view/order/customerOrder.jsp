@@ -10,6 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <c:import url="../../layout.jsp"></c:import>
     <title>Title</title>
     <style>
         body {

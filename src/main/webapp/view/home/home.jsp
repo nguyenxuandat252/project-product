@@ -209,7 +209,6 @@
 <h2>Danh sách sản phẩm</h2>
 <form action="/cart" method="get">
     <div class="product-container">
-
         <c:forEach var="product" items="${productList}">
             <div class="product-card">
                 <p>
