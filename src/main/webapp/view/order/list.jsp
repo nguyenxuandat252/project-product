@@ -19,7 +19,7 @@
 <c:import url="/navbarAdmin.jsp"></c:import>
 
 <table id="tableOrder" class="table table-striped table-hover align-middle text-center">
-    <thead>
+    <thead class="table-primary">
     <tr>
         <th>ID</th>
         <th>Tên khách hàng</th>

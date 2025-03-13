@@ -17,7 +17,7 @@
     </div>
     <div class="table-responsive">
         <table id="tableProduct" class="table table-striped table-hover table-bordered">
-            <thead>
+            <thead class="table-primary">
             <tr>
                 <th>ID</th>
                 <th>Tên</th>

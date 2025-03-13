@@ -10,7 +10,7 @@
 <body>
 <c:import url="/navbarAdmin.jsp"></c:import>
 <table class="table table-striped table-hover align-middle text-center">
-    <thead>
+    <thead class="table-primary">
     <tr>
         <th>ID Order</th>
         <th>ID sản phẩm</th>
