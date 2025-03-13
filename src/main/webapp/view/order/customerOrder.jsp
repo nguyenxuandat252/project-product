@@ -54,6 +54,7 @@
     </style>
 </head>
 <body>
+<c:import url="../../navbar.jsp"></c:import>
 <h1>${mess}</h1>
     <table>
         <tr>
