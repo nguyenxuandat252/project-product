@@ -46,6 +46,8 @@ public class OrderDto {
         this.sumMonney = sumMonney;
     }
 
+
+
     public double getSumMonney() {
         return sumMonney;
     }
