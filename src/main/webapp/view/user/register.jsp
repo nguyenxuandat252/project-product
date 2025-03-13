@@ -181,18 +181,191 @@
 <c:import url="../../navbar.jsp"></c:import>
 <form id="register" action="/register" method="post">
     <label>Tên đăng nhập</label>
-    <input type="text" name="username" required><br>
+    <input type="text" name="username" required id="username"><br>
+    <p id="message"></p>
     <label>Mật khẩu</label>
-    <input type="password" name="password" required><br>
+    <input type="password" name="password" required id="password"><br>
+    <p id="message1"></p>
     <label>Họ và tên</label>
-    <input type="text" name="name" required><br>
+    <input type="text" name="name" required id="fullName"><br>
+    <p id="message2"></p>
     <label>Địa chỉ</label>
-    <input type="text" name="address" required><br>
+    <input type="text" name="address" required id="address"><br>
+    <p id="message4"></p>
     <label>Số điện thoại</label>
-    <input type="tel" name="phone" required><br>
+    <input type="tel" name="phone" required id="phoneNumber"><br>
+    <p id="message3"></p>
     <input type="submit" value="Đăng ký">
-    <a href="/view/product/login.jsp">Đăng nhập</a>
+    <a href="/login">Đăng nhập</a>
     <p>${mess}</p>
 </form>
+<script>
+    function validateFullName() {
+        const fullName = document.getElementById("fullName").value.trim();
+        const messageElement = document.getElementById("message2");
+
+        if (fullName.length === 0) {
+            messageElement.textContent = "Họ và tên không được để trống!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        if (fullName.split(" ").length < 2) {
+            messageElement.textContent = "Họ và tên phải có ít nhất 2 từ!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        if (!/^[a-zA-ZÀ-ỹ\s]+$/.test(fullName)) {
+            messageElement.textContent = "Họ và tên chỉ được chứa chữ cái và khoảng trắng!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        if (fullName.length < 3) {
+            messageElement.textContent = "Họ và tên phải có ít nhất 3 ký tự!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        messageElement.textContent = "Họ và tên hợp lệ!";
+        messageElement.style.color = "green";
+        return true;
+    }
+    function validatePhoneNumber() {
+        const phone = document.getElementById("phoneNumber").value.trim();
+        const messageElement = document.getElementById("message3");
+
+        // Kiểm tra rỗng
+        if (phone.length === 0) {
+            messageElement.textContent = "Số điện thoại không được để trống!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        // Kiểm tra số điện thoại Việt Nam hợp lệ (bắt đầu bằng 0, có 10 chữ số)
+        if (!/^0\d{9}$/.test(phone)) {
+            messageElement.textContent = "Số điện thoại phải bắt đầu bằng 0 và có 10 chữ số!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        messageElement.textContent = "Số điện thoại hợp lệ!";
+        messageElement.style.color = "green";
+        return true;
+    }
+    function validateAddress() {
+        const address = document.getElementById("address").value.trim();
+        const messageElement = document.getElementById("message4");
+
+        // Kiểm tra rỗng
+        if (address.length === 0) {
+            messageElement.textContent = "Địa chỉ không được để trống!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        // Kiểm tra địa chỉ chỉ chứa chữ cái, số, dấu phẩy và khoảng trắng
+        if (!/^[a-zA-ZÀ-ỹ0-9\s,.-]+$/.test(address)) {
+            messageElement.textContent = "Địa chỉ chỉ được chứa chữ cái, số, dấu phẩy, dấu chấm và khoảng trắng!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        // Kiểm tra độ dài tối thiểu
+        if (address.length < 5) {
+            messageElement.textContent = "Địa chỉ phải có ít nhất 5 ký tự!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        messageElement.textContent = "Địa chỉ hợp lệ!";
+        messageElement.style.color = "green";
+        return true;
+    }
+    function validateName() {
+        const username = document.getElementById("username").value;
+        const messageElement = document.getElementById("message");
+
+        if (username.length === 0) {
+            messageElement.textContent = "Tên đăng nhập không được để trống!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        if (!/^[a-zA-Z]/.test(username)) {
+            messageElement.textContent = "Tên đăng nhập phải bắt đầu bằng chữ cái!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        if (/\s/.test(username)) {
+            messageElement.textContent = "Tên đăng nhập không được chứa khoảng trắng!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        if (!/^[a-zA-Z0-9]+$/.test(username)) {
+            messageElement.textContent = "Tên đăng nhập chỉ được chứa chữ cái và số, không có ký tự đặc biệt!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        if (username.length < 5) {
+            messageElement.textContent = "Tên đăng nhập phải có ít nhất 5 ký tự!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        messageElement.textContent = "Tên đăng nhập hợp lệ!";
+        messageElement.style.color = "green";
+        return true;
+    }
+    function validatePassword() {
+        const password = document.getElementById("password").value;
+        const messageElement = document.getElementById("message1");
+
+        if (password.length === 0) {
+            messageElement.textContent = "Mật khẩu không được để trống!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+
+        if (/\s/.test(password)) {
+            messageElement.textContent = "Mật khẩu không được chứa khoảng trắng!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        if (!/^[a-zA-Z0-9]+$/.test(password)) {
+            messageElement.textContent = "Mật khẩu chỉ được chứa chữ cái và số, không có ký tự đặc biệt!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        if (password.length < 5) {
+            messageElement.textContent = "Mật khẩu phải có ít nhất 5 ký tự!";
+            messageElement.style.color = "red";
+            return false;
+        }
+
+        messageElement.textContent = "Mật khẩu hợp lệ!";
+        messageElement.style.color = "green";
+        return true;
+    }
+    document.getElementById("username").addEventListener("input", validateName);
+
+    // Gắn sự kiện kiểm tra khi nhập
+    document.getElementById("address").addEventListener("input", validateAddress);
+
+
+    // Gắn sự kiện kiểm tra khi nhập
+    document.getElementById("phoneNumber").addEventListener("input", validatePhoneNumber);
+
+    // Gắn sự kiện kiểm tra khi nhập
+    document.getElementById("fullName").addEventListener("input", validateFullName);
+    document.getElementById("password").addEventListener("input", validatePassword);
+</script>
 </body>
 </html>

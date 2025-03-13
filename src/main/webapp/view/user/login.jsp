@@ -89,11 +89,87 @@
 <form id="login" action="/login" method="post">
     <p>${mess}</p>
     <label>Tên đăng nhập</label>
-    <input type="text" name="username"><br>
+    <input type="text" name="username" id="username" oninput="validateName()"><br>
+    <p id="message"></p>
     <label>Mật khẩu</label>
-    <input type="password" name="password"><br>
+    <input type="password" name="password" id="password" oninput="validatePassword()"><br>
+    <p id="message1"></p>
     <a href="/register">Đăng ký ngay</a>
     <input type="submit" value="Đăng nhập">
 </form>
+<script>
+        function validateName() {
+            const username = document.getElementById("username").value;
+            const messageElement = document.getElementById("message");
+
+            if (username.length === 0) {
+                messageElement.textContent = "Tên đăng nhập không được để trống!";
+                messageElement.style.color = "red";
+                return false;
+            }
+
+            if (!/^[a-zA-Z]/.test(username)) {
+                messageElement.textContent = "Tên đăng nhập phải bắt đầu bằng chữ cái!";
+                messageElement.style.color = "red";
+                return false;
+            }
+
+            if (/\s/.test(username)) {
+                messageElement.textContent = "Tên đăng nhập không được chứa khoảng trắng!";
+                messageElement.style.color = "red";
+                return false;
+            }
+
+            if (!/^[a-zA-Z0-9]+$/.test(username)) {
+                messageElement.textContent = "Tên đăng nhập chỉ được chứa chữ cái và số, không có ký tự đặc biệt!";
+                messageElement.style.color = "red";
+                return false;
+            }
+
+            if (username.length < 5) {
+                messageElement.textContent = "Tên đăng nhập phải có ít nhất 5 ký tự!";
+                messageElement.style.color = "red";
+                return false;
+            }
+
+            messageElement.textContent = "Tên đăng nhập hợp lệ!";
+            messageElement.style.color = "green";
+            return true;
+        }
+        function validatePassword() {
+            const password = document.getElementById("password").value;
+            const messageElement = document.getElementById("message1");
+
+            if (password.length === 0) {
+                messageElement.textContent = "Mật khẩu không được để trống!";
+                messageElement.style.color = "red";
+                return false;
+            }
+
+
+            if (/\s/.test(password)) {
+                messageElement.textContent = "Mật khẩu không được chứa khoảng trắng!";
+                messageElement.style.color = "red";
+                return false;
+            }
+
+            if (!/^[a-zA-Z0-9]+$/.test(password)) {
+                messageElement.textContent = "Mật khẩu chỉ được chứa chữ cái và số, không có ký tự đặc biệt!";
+                messageElement.style.color = "red";
+                return false;
+            }
+
+            if (username.length < 5) {
+                messageElement.textContent = "Mật khẩu phải có ít nhất 5 ký tự!";
+                messageElement.style.color = "red";
+                return false;
+            }
+
+            messageElement.textContent = "Mật khẩu hợp lệ!";
+            messageElement.style.color = "green";
+            return true;
+        }
+        document.getElementById("username").addEventListener("input", validateName);
+</script>
 </body>
 </html>
