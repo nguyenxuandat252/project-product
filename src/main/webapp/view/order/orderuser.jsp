@@ -78,28 +78,34 @@
 </head>
 <body>
 <h2>${message}</h2>
-<table>
-    <tr>
-        <th>NAME</th>
-        <th>QUANTITY</th>
-        <th>PRICE</th>
-        <th>FUNCTION</th>
-    </tr>
-<%--    <c:set var="cart" value="${(CartDto)(sessionScope.cart)}"/>--%>
-    <c:forEach var="product" items="${cart.getProductMap().keySet()}">
-        <tr>
-            <td>${product.name}</td>
-            <td>${cart.getProductMap().get(product)}</td>
-            <td><fmt:formatNumber value="${product.getPrice()}" type="currency" currencySymbol="₫"/></td>
-<%--            <td>${product.getPrice()}</td>--%>
-            <td>
-                <form action="/orderuser?action=order&id=${product.id}" method="post">
-                    <button>Đặt hàng</button>
-                </form>
-                <a href="/orderuser?action=delete&id=${product.id}" onclick="return confirm('Delete order?')">Delete</a>
-            </td>
-        </tr>
-    </c:forEach>
-</table>
+
+<c:choose>
+    <c:when test="${not empty cart.getProductMap()}">
+        <table>
+            <tr>
+                <th>NAME</th>
+                <th>QUANTITY</th>
+                <th>PRICE</th>
+                <th>FUNCTION</th>
+            </tr>
+            <c:forEach var="product" items="${cart.getProductMap().keySet()}">
+                <tr>
+                    <td>${product.name}</td>
+                    <td>${cart.getProductMap().get(product)}</td>
+                    <td><fmt:formatNumber value="${product.getPrice()}" type="currency" currencySymbol="₫"/></td>
+                    <td>
+                        <form action="/orderuser?action=order&id=${product.id}" method="post">
+                            <button>Đặt hàng</button>
+                        </form>
+                        <a href="/orderuser?action=delete&id=${product.id}" onclick="return confirm('Delete order?')">Delete</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:when>
+    <c:otherwise>
+        <p style="color: red; font-weight: bold;">Không có sản phẩm nào trong giỏ hàng.</p>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

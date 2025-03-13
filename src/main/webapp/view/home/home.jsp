@@ -167,8 +167,8 @@
                         Sản phẩm
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Điện thoại</a></li>
-                        <li><a class="dropdown-item" href="#">Laptop</a></li>
+                        <li><a class="dropdown-item" href="/home?action=phone">Điện thoại</a></li>
+                        <li><a class="dropdown-item" href="/home?action=laptop">Laptop</a></li>
                     </ul>
                 </li>
 
@@ -179,7 +179,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Đơn hàng</a>
+                    <a class="nav-link" href="/home?action=customerOrder">Đơn hàng</a>
                 </li>
             </ul>
 
