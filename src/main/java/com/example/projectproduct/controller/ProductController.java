@@ -69,7 +69,8 @@ public class ProductController extends HttpServlet {
                 String description = req.getParameter("description");
                 int quality = Integer.parseInt(req.getParameter("quantity"));
                 int idCategory = Integer.parseInt(req.getParameter("id_category"));
-                Product product = new Product(name, price, description, quality, idCategory);
+                String url =req.getParameter("image_Url");
+                Product product = new Product(name, price, description, quality, idCategory,url);
                 productService.addProduct(product);
                 resp.sendRedirect("/admin");
                 break;
@@ -79,8 +80,9 @@ public class ProductController extends HttpServlet {
                 double priceUpdate = Double.parseDouble(req.getParameter("price"));
                 String descriptionUpdate = req.getParameter("description");
                 int qualityUpdate = Integer.parseInt(req.getParameter("quantity"));
+                String urlUpdate = req.getParameter("image_Url");
                 int idCategoryUpdate = Integer.parseInt(req.getParameter("id_category"));
-                Product product1 = new Product(idUpdate, nameUpdate, priceUpdate, descriptionUpdate, qualityUpdate, idCategoryUpdate);
+                Product product1 = new Product(idUpdate, nameUpdate, priceUpdate, descriptionUpdate, qualityUpdate,urlUpdate, idCategoryUpdate);
                 productService.updateProduct(idUpdate, product1);
                 req.setAttribute("list", productService.getProduct());
                 req.getRequestDispatcher("/view/product/list.jsp").forward(req, resp);

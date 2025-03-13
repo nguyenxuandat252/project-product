@@ -12,8 +12,8 @@ import java.util.List;
 
 public class ProductRepository implements IProductRepository {
     private final static String SELECT_ALL = "select product.id,product.name,product.price,product.description,product.quantity,product.id_category,category.name as category_name  from product left join category on product.id_category=category.id";
-    private final static String ADD_NEW = "insert into product (`name`,price,description,quality,id_category) value(?,?,?,?,?)";
-    private final static String EDIT = "update product set  `name`=?, price=?,description=?,quantity=?,id_category=? WHERE id=?";
+    private final static String ADD_NEW = "insert into product (`name`,price,description,quality,id_category,image_Url) value(?,?,?,?,?,?)";
+    private final static String EDIT = "update product set  `name`=?, price=?,description=?,quantity=?,image_Url,id_category=? WHERE id=?";
     private final static String DELETE = "delete from product where id=?";
     private final static String SEARCH = "SELECT p.*, c.name FROM product p LEFT JOIN category c ON p.id_category = c.id WHERE p.name LIKE ?";
 
@@ -51,6 +51,7 @@ public class ProductRepository implements IProductRepository {
             preparedStatement.setString(3, product.getDescription());
             preparedStatement.setInt(4,product.getQuantity());
             preparedStatement.setInt(5,product.getIdCategory());
+            preparedStatement.setString(6,product.getImageUrl());
             int row = preparedStatement.executeUpdate();
             return row==1;
         } catch (SQLException e) {
@@ -69,7 +70,8 @@ public class ProductRepository implements IProductRepository {
             preparedStatement.setString(3,product.getDescription());
             preparedStatement.setDouble(4,product.getQuantity());
             preparedStatement.setInt(5,product.getIdCategory());
-            preparedStatement.setInt(6,product.getId());
+            preparedStatement.setString(6, product.getImageUrl());
+            preparedStatement.setInt(7,product.getId());
             int row=preparedStatement.executeUpdate();
             return row==1;
         } catch (SQLException e) {

@@ -11,109 +11,109 @@
 <head>
     <title>Title</title>
     <c:import url="/layout.jsp"></c:import>
-    <style>
-        input.is-invalid, select.is-invalid {
-            border: 2px solid red;
-        }
+<%--    <style>--%>
+<%--        input.is-invalid, select.is-invalid {--%>
+<%--            border: 2px solid red;--%>
+<%--        }--%>
 
-        small {
-            color: red;
-        }
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
+<%--        small {--%>
+<%--            color: red;--%>
+<%--        }--%>
+<%--        body {--%>
+<%--            background-color: #f8f9fa;--%>
+<%--            font-family: Arial, sans-serif;--%>
+<%--        }--%>
 
-        .container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
+<%--        .container {--%>
+<%--            background-color: white;--%>
+<%--            padding: 30px;--%>
+<%--            border-radius: 10px;--%>
+<%--            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);--%>
+<%--        }--%>
 
-        h1 {
-            text-align: center;
-            color: #0d6efd;
-            font-weight: bold;
-        }
+<%--        h1 {--%>
+<%--            text-align: center;--%>
+<%--            color: #0d6efd;--%>
+<%--            font-weight: bold;--%>
+<%--        }--%>
 
-        .btn {
-            border-radius: 20px;
-            font-weight: bold;
-        }
+<%--        .btn {--%>
+<%--            border-radius: 20px;--%>
+<%--            font-weight: bold;--%>
+<%--        }--%>
 
-        .btn-primary {
-            background-color: #0d6efd;
-            border: none;
-        }
+<%--        .btn-primary {--%>
+<%--            background-color: #0d6efd;--%>
+<%--            border: none;--%>
+<%--        }--%>
 
-        .btn-success {
-            background-color: #28a745;
-            border: none;
-        }
+<%--        .btn-success {--%>
+<%--            background-color: #28a745;--%>
+<%--            border: none;--%>
+<%--        }--%>
 
-        .btn-warning {
-            background-color: #ffc107;
-            border: none;
-        }
+<%--        .btn-warning {--%>
+<%--            background-color: #ffc107;--%>
+<%--            border: none;--%>
+<%--        }--%>
 
-        .btn-danger {
-            background-color: #dc3545;
-            border: none;
-        }
+<%--        .btn-danger {--%>
+<%--            background-color: #dc3545;--%>
+<%--            border: none;--%>
+<%--        }--%>
 
-        table {
-            width: 100%;
-            border-radius: 10px;
-            overflow: hidden;
-        }
+<%--        table {--%>
+<%--            width: 100%;--%>
+<%--            border-radius: 10px;--%>
+<%--            overflow: hidden;--%>
+<%--        }--%>
 
-        th {
-            background-color: #0d6efd;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
+<%--        th {--%>
+<%--            background-color: #0d6efd;--%>
+<%--            color: white;--%>
+<%--            text-align: center;--%>
+<%--            padding: 10px;--%>
+<%--        }--%>
 
-        td {
-            text-align: center;
-            padding: 10px;
-        }
+<%--        td {--%>
+<%--            text-align: center;--%>
+<%--            padding: 10px;--%>
+<%--        }--%>
 
-        .table-responsive {
-            overflow-x: auto;
-        }
+<%--        .table-responsive {--%>
+<%--            overflow-x: auto;--%>
+<%--        }--%>
 
-        .modal-header {
-            background-color: #dc3545;
-            color: white;
-        }
-
-
-    </style>
+<%--        .modal-header {--%>
+<%--            background-color: #dc3545;--%>
+<%--            color: white;--%>
+<%--        }--%>
+<%--    </style>--%>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"> Thêm Mới Đơn Hàng</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/admin">Trang Chủ</a>
-                </li>
-            </ul>
-            <form class="d-flex" action="/admin" method="post">
-                <button class="btn btn-outline-dark" type="submit">Quay lại</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<c:import url="../../navbar.jsp"></c:import>
+<%--<nav class="navbar navbar-expand-lg navbar-light bg-primary">--%>
+<%--    <div class="container-fluid">--%>
+
+<%--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"--%>
+<%--                data-bs-target="#navbarNav"--%>
+<%--                aria-controls="navbarNav" aria-expanded="false"--%>
+<%--                aria-label="Toggle navigation">--%>
+<%--            <span class="navbar-toggler-icon"></span>--%>
+<%--        </button>--%>
+<%--        <div class="collapse navbar-collapse" id="navbarNav">--%>
+<%--            <ul class="navbar-nav me-auto">--%>
+<%--                <li class="nav-item">--%>
+<%--                    <a class="nav-link active" href="/admin"><img width="50" height="50" src="https://img.icons8.com/ios/50/home--v1.png" alt="home--v1"></a>--%>
+<%--                </li>--%>
+<%--            </ul>--%>
+<%--            <a class="navbar-brand w-100 text-center text-white" href="#"> Thêm Mới Đơn Hàng</a>--%>
+<%--            <form class="d-flex" action="/admin" method="post">--%>
+<%--                <button class="btn btn-outline-dark btn-sm px-3 py-1" type="submit">Quay lại</button>--%>
+<%--            </form>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</nav>--%>
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
     <div class="card p-4 shadow-lg" style="width: 400px; border-radius: 15px;">
         <h3 class="text-center text-primary mb-3">Thêm Sản Phẩm</h3>
@@ -154,7 +154,11 @@
                 </select>
                 <small id="errorIdCategory" class="text-danger"></small>
             </div>
-
+            <div class="mb-3">
+                <label for="url" class="form-label">Url hình ảnh</label>
+                <input class="form-control" name="url" id="url" onblur="checkQuality()" placeholder="Nhập url hình ảnh">
+                <small id="errorUrl" class="text-danger"></small>
+            </div>
             <button class="btn btn-primary w-100 fw-bold">Lưu</button>
         </form>
     </div>
