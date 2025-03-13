@@ -27,7 +27,7 @@ public class HomeService implements IHomeService{
     }
 
     @Override
-    public List<OrderDto> getYourorder() {
-        return homeRepository.getYourorder();
+    public List<OrderDto> getYourorder(int id) {
+        return homeRepository.getYourorder(id);
     }
 }

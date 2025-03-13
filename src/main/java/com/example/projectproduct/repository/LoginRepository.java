@@ -43,4 +43,23 @@ public class LoginRepository implements ILoginRepository{
         }
         return role;
     }
+    @Override
+    public int getId(String username, String password) {
+        Connection connection = BaseRepository.getConnectDB();
+        int id = 0;
+        try {
+            PreparedStatement preparedStatement = connection.
+                    prepareStatement("select id from user where username = ? and password = ?;");
+            preparedStatement.setString(1,username);
+            preparedStatement.setString(2,password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                id = resultSet.getInt("id");
+                return id;
+            }
+        } catch (SQLException e) {
+            System.out.println("lỗi");
+        }
+        return id;
+    }
 }
