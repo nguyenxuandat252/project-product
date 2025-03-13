@@ -34,7 +34,13 @@ public class LoginController extends HttpServlet {
             session.setAttribute("username", username);
             session.setAttribute("id", loginService.getId(username,password));
             session.setAttribute("role", loginService.getRole(username,password));
-            resp.sendRedirect("/home");
+            String role = (String) session.getAttribute("role");
+            if(role.equals("admin")){
+                resp.sendRedirect("/admin");
+            }else {
+                resp.sendRedirect("/home");
+            }
+
         }else {
             mess="Đăng nhập thất bại kiểm tra lại thông tin đăng nhập!";
             req.setAttribute("mess",mess);
