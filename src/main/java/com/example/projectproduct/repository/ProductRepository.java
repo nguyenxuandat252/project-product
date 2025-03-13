@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ProductRepository implements IProductRepository {
     private final static String SELECT_ALL = "select product.id,product.name,product.price,product.description,product.quantity,product.id_category,category.name as category_name  from product left join category on product.id_category=category.id";
-    private final static String ADD_NEW = "insert into product (`name`,price,description,quality,id_category,image_Url) value(?,?,?,?,?,?)";
+    private final static String ADD_NEW = "insert into product (`name`,price,description,quantity,id_category,image_Url) value(?,?,?,?,?,?)";
     private final static String EDIT = "update product set  `name`=?, price=?,description=?,quantity=?,image_Url,id_category=? WHERE id=?";
     private final static String DELETE = "delete from product where id=?";
     private final static String SEARCH = "SELECT p.*, c.name FROM product p LEFT JOIN category c ON p.id_category = c.id WHERE p.name LIKE ?";
