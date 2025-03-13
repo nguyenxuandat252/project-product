@@ -5,7 +5,17 @@
 <head>
     <title>Title</title>
     <c:import url="/layout.jsp"></c:import>
+<style>
+    .table-responsive {
+        overflow-x: hidden !important;
+        white-space: nowrap;
+    }
 
+    #tableProduct {
+        width: 100% !important;
+        table-layout: fixed;
+        word-wrap: break-word;}
+</style>
 </head>
 <c:import url="/navbarAdmin.jsp"></c:import>
 
@@ -82,6 +92,8 @@
     $(document).ready(function() {
         $('#tableProduct').DataTable({
             "lengthChange": false,
+            "autoWidth": false, // Tắt tự động điều chỉnh chiều rộng
+            "info": false,// tắt info
             "pageLength": 5,
             "searching": false,
             "language": {
@@ -89,7 +101,8 @@
                     "previous": "Trước",
                     "next": "Tiếp"
                 },
-            }
+            },
+            "scrollX": false, // tắt thanh lăn
         });
     });
 
