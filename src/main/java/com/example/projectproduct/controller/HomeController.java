@@ -50,12 +50,12 @@ public class HomeController extends HttpServlet {
             case "phone":
                 productDtos = homeService.getPhone();
                 break;
-            case "customerOrder":
-                List<OrderDto> orderDtoList = new ArrayList<>();
-                orderDtoList = homeService.getYourorder();
-                req.setAttribute("orderDtoList",orderDtoList);
-                req.getRequestDispatcher("/view/order/customerOrder").forward(req,resp);
-                break;
+//            case "customerOrder":
+//                List<OrderDto> orderDtoList = new ArrayList<>();
+//                orderDtoList = homeService.getYourorder();
+//                req.setAttribute("orderDtoList",orderDtoList);
+//                req.getRequestDispatcher("/view/order/customerOrder").forward(req,resp);
+//                break;
             default:
                 productDtos = homeService.getAll();
                 break;

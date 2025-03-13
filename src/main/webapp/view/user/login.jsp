@@ -15,9 +15,18 @@
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
             display: flex;
+            flex-direction: column; /* Căn theo chiều dọc */
+            align-items: center; /* Căn giữa theo chiều ngang */
             justify-content: center;
-            align-items: center;
             height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 28px;
         }
 
         form {
@@ -74,9 +83,12 @@
         a:hover {
             text-decoration: underline;
         }
+
+
     </style>
 </head>
 <body>
+<h1>Login</h1>
 <form action="/login" method="post">
     <p>${mess}</p>
     <label>username</label>
