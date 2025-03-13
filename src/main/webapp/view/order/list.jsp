@@ -142,7 +142,7 @@
         <th>Số điện thoại</th>
         <th>Địa chỉ</th>
         <th>Ngày đặt</th>
-        <th>Tên sản phẩm</th>
+<%--        <th>Tên sản phẩm</th>--%>
         <th>Giá Tiền</th>
         <th>Trạng thái</th>
         <th>Chi tiết</th>
@@ -157,7 +157,7 @@
             <td>${order.phoneNumber}</td>
             <td>${order.address}</td>
             <td>${order.date}</td>
-            <th>${order.nameProduct}</th>
+<%--            <th>${order.nameProduct}</th>--%>
             <td><fmt:formatNumber value="${order.price}" pattern="#,###VND"/></td>
             <td>${order.status}</td>
             <td>
