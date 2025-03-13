@@ -23,31 +23,31 @@
             <input class="form-control mb-3" type="hidden" name="id">
 
             <div class="mb-3">
-                <label for="name" class="form-label">Tên sản phẩm</label>
+                <label for="name" class="form-label">Tên sản phẩm(*)</label>
                 <input class="form-control" name="name" id="name" onblur="checkName()" placeholder="Nhập tên">
                 <small id="errorName" class="text-danger"></small>
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Giá</label>
+                <label for="price" class="form-label">Giá(*)</label>
                 <input class="form-control" name="price" id="price" onblur="checkPrice()" placeholder="Nhập giá">
                 <small id="errorPrice" class="text-danger"></small>
             </div>
 
             <div class="mb-3">
-                <label for="description" class="form-label">Mô tả</label>
+                <label for="description" class="form-label">Mô tả(*)</label>
                 <input class="form-control" name="description" id="description" onblur="checkDescription()" placeholder="Nhập mô tả">
                 <small id="errorDescription" class="text-danger"></small>
             </div>
 
             <div class="mb-3">
-                <label for="quantity" class="form-label">Số lượng</label>
+                <label for="quantity" class="form-label">Số lượng(*)</label>
                 <input class="form-control" name="quantity" id="quantity" onblur="checkQuality()" placeholder="Nhập số lượng">
                 <small id="errorQuality" class="text-danger"></small>
             </div>
 
             <div class="mb-3">
-                <label for="idCategory" class="form-label"> Danh Mục</label>
+                <label for="idCategory" class="form-label"> Danh Mục(*)</label>
                 <select class="form-control" name="id_category" id="idCategory">
                     <option value="">-- Chọn danh mục --</option>
                     <c:forEach var="category" items="${category}">
@@ -57,7 +57,7 @@
                 <small id="errorIdCategory" class="text-danger"></small>
             </div>
             <div class="mb-3">
-                <label for="url" class="form-label">Url hình ảnh</label>
+                <label for="url" class="form-label">Url hình ảnh(*)</label>
                 <input class="form-control" name="url" id="url" onblur="checkQuality()" placeholder="Nhập url hình ảnh">
                 <small id="errorUrl" class="text-danger"></small>
             </div>
@@ -77,7 +77,8 @@
 
     function checkPrice() {
         let price = document.getElementById("price").value;
-        if (price < 0 || price === "") {
+        let regex = /^\d+000$/
+        if (regex.test(price) || price === "" ) {
             document.getElementById("errorPrice").innerText = "Vui lòng nhập giá hợp lý";
         } else {
             document.getElementById("errorPrice").innerText = "";
@@ -95,7 +96,8 @@
 
     function checkQuality() {
         let quality = document.getElementById("quantity").value;
-        if (quality <= 0 || quality === "") {
+        let regex=/^\d+$/
+        if (regex.test(quality) || quality === "") {
             document.getElementById("errorQuality").innerText = "Vui lòng nhập lại"
         } else {
             document.getElementById("errorQuality").innerText = ""
