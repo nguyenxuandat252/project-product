@@ -151,7 +151,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/home?action=customerOrder">Đơn hàng</a>
+                    <a class="nav-link" href="/viewOrders?action=customerOrder">Đơn hàng</a>
                 </li>
             </ul>
 

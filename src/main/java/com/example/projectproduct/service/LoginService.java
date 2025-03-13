@@ -15,4 +15,9 @@ public class LoginService implements ILoginService{
     public String getRole(String username, String password) {
         return loginRepository.getRole(username,password);
     }
+
+    @Override
+    public int getId(String username, String password) {
+        return loginRepository.getId(username,password);
+    }
 }

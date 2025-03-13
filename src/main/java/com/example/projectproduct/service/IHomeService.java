@@ -10,5 +10,5 @@ public interface IHomeService {
     List<ProductDto> getAll();
     List<ProductDto> getLaptop();
     List<ProductDto> getPhone();
-    List<OrderDto> getYourorder();
+    List<OrderDto> getYourorder(int id);
 }

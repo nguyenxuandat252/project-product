@@ -95,14 +95,14 @@
                     <td>${cart.getProductMap().get(product)}</td>
                     <td><fmt:formatNumber value="${product.getPrice()}" type="currency" currencySymbol="₫"/></td>
                     <td>
-                        <form action="/orderuser?action=order&id=${product.id}" method="post">
-                            <button>Đặt hàng</button>
-                        </form>
                         <a href="/orderuser?action=delete&id=${product.id}" onclick="return confirm('Delete order?')">Delete</a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
+        <form action="/orderuser?action=order&id=${product.id}" method="post">
+            <button>Đặt hàng</button>
+        </form>
     </c:when>
     <c:otherwise>
         <p style="color: red; font-weight: bold;">Không có sản phẩm nào trong giỏ hàng.</p>
