@@ -69,7 +69,7 @@ public class ProductController extends HttpServlet {
                 String description = req.getParameter("description");
                 int quality = Integer.parseInt(req.getParameter("quantity"));
                 int idCategory = Integer.parseInt(req.getParameter("id_category"));
-                String url =req.getParameter("image_Url");
+                String url =req.getParameter("url");
                 Product product = new Product(name, price, description, quality, idCategory,url);
                 productService.addProduct(product);
                 resp.sendRedirect("/admin");

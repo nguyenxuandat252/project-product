@@ -8,31 +8,9 @@
     <c:import url="/layout.jsp"></c:import>
 </head>
 <body>
-<c:import url="../../navbar.jsp"></c:import>
-<%--<nav class="navbar navbar-expand-lg navbar-light bg-primary">--%>
-<%--    <div class="container-fluid">--%>
-
-<%--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"--%>
-<%--                data-bs-target="#navbarNav"--%>
-<%--                aria-controls="navbarNav" aria-expanded="false"--%>
-<%--                aria-label="Toggle navigation">--%>
-<%--            <span class="navbar-toggler-icon"></span>--%>
-<%--        </button>--%>
-<%--        <div class="collapse navbar-collapse" id="navbarNav">--%>
-<%--            <ul class="navbar-nav me-auto">--%>
-<%--                <li class="nav-item">--%>
-<%--                    <a class="nav-link active" href="/admin"><img width="50" height="50" src="https://img.icons8.com/ios/50/home--v1.png" alt="home--v1"></a>--%>
-<%--                </li>--%>
-<%--            </ul>--%>
-<%--            <a class="navbar-brand w-100 text-center text-white" href="#">Chi Tiết Đơn Hàng</a>--%>
-<%--            <form class="d-flex" action="/order" method="get">--%>
-<%--                <button class="btn btn-outline-dark btn-sm px-3 py-1" type="submit">Quay lại</button>--%>
-<%--            </form>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</nav>--%>
+<c:import url="/navbarAdmin.jsp"></c:import>
 <table class="table table-striped table-hover align-middle text-center">
-    <thead>
+    <thead class="table-primary">
     <tr>
         <th>ID Order</th>
         <th>ID sản phẩm</th>
