@@ -131,12 +131,15 @@
             color: black;
             border-radius: 5px;
         }
-
         .pagination a:hover {
             background-color: #f0f0f0;
         }
-
-
+        .product-card p:first-child{
+            height: 130px;
+        }
+        h2{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -156,31 +159,33 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/home">Home</a>
-                </li>
 
-                <!-- Dropdown Sản phẩm -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button"
-                       data-bs-toggle="dropdown">
-                        Sản phẩm
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Điện thoại</a></li>
-                        <li><a class="dropdown-item" href="#">Laptop</a></li>
-                    </ul>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/home">Home</a>
+                    </li>
 
-                <li class="nav-item">
-                    <form action="/orderuser" method="get">
-                        <a class="nav-link" href="/orderuser">Giỏ hàng</a>
-                    </form>
-                </li>
+                    <!-- Dropdown Sản phẩm -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button"
+                           data-bs-toggle="dropdown">
+                            Sản phẩm
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/home?action=phone">Điện thoại</a></li>
+                            <li><a class="dropdown-item" href="/home?action=laptop">Laptop</a></li>
+                        </ul>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Đơn hàng</a>
-                </li>
+                    <li class="nav-item">
+                        <form action="/cart" method="post">
+                            <a class="nav-link" href="/orderuser">Giỏ hàng</a>
+                        </form>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/viewOrders?action=customerOrder">Đơn hàng</a>
+                    </li>
+
             </ul>
 
             <!-- Tên đăng nhập và Đăng xuất -->
@@ -196,18 +201,18 @@
     </div>
 </nav>
 <h2>Danh sách sản phẩm</h2>
-<form action="/cart" method="post">
+<form action="/cart" method="get">
     <div class="product-container">
 
         <c:forEach var="product" items="${productList}">
             <div class="product-card">
                 <p>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDxNTjxa7KgQ7UDj336QEGs82Pf8KPJURnlw&s" alt="Hình ảnh">
+                    <img src="${product.getImageUrl()}" alt="Hình ảnh">
                 </p>
                 <p>${product.getName()}</p>
                 <p><fmt:formatNumber value="${product.getPrice()}" type="currency" currencySymbol="₫"/></p>
                 <p>
-                    <a href="/home/cart?id=${product.getId()}">Thêm giỏ hàng</a>
+                    <a href="/home/cart?id=${product.getId()}" class="btn btn-primary btn-sm">Thêm giỏ hàng</a>
                         <%--                <button class="btn btn-primary">Đặt hàng</button>--%>
                 </p>
             </div>

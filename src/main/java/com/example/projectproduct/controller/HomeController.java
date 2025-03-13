@@ -2,7 +2,10 @@ package com.example.projectproduct.controller;
 
 
 
+import com.example.projectproduct.dto.CartDto;
+import com.example.projectproduct.dto.OrderDto;
 import com.example.projectproduct.dto.ProductDto;
+import com.example.projectproduct.model.Product;
 import com.example.projectproduct.service.HomeService;
 import com.example.projectproduct.service.IHomeService;
 
@@ -13,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name= "HomeController" , value = "/home")
@@ -34,8 +38,29 @@ public class HomeController extends HttpServlet {
             session.setAttribute("greeting", greeting);
         }
 
-
+        String action = req.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
         List<ProductDto> productDtos = homeService.getAll();
+        switch (action) {
+            case "laptop":
+                productDtos = homeService.getLaptop();
+                break;
+            case "phone":
+                productDtos = homeService.getPhone();
+                break;
+//            case "customerOrder":
+//                List<OrderDto> orderDtoList = new ArrayList<>();
+//                orderDtoList = homeService.getYourorder();
+//                req.setAttribute("orderDtoList",orderDtoList);
+//                req.getRequestDispatcher("/view/order/customerOrder").forward(req,resp);
+//                break;
+            default:
+                productDtos = homeService.getAll();
+                break;
+        }
+
         int page = 1; // Mặc định trang đầu tiên
         int itemsPerPage = 8; // Số sản phẩm mỗi trang
 
