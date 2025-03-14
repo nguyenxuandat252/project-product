@@ -95,7 +95,37 @@
                     <td>${cart.getProductMap().get(product)}</td>
                     <td><fmt:formatNumber value="${product.getPrice()}" type="currency" currencySymbol="₫"/></td>
                     <td>
-                        <a href="/orderuser?action=delete&id=${product.id}" onclick="return confirm('Delete order?')">Delete</a>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                            Delete
+                        </button>
+                        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="modalLabel">Thông báo</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Body -->
+                                    <div class="modal-body">
+                                        Bạn có muốn xóa sản phẩm trong giỏ hàng ?
+                                    </div>
+
+                                    <!-- Footer -->
+                                    <div class="modal-footer">
+                                        <form action="/orderuser" method="get">
+                                            <input type="hidden" name="action" value="delete">
+                                            <input type="hidden" name="id" value="${product.id}">
+                                            <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Xóa</button>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+<%--                        <a href="/orderuser?action=delete&id=${product.id}" onclick="return confirm('Delete order?')">Delete</a>--%>
                     </td>
                 </tr>
             </c:forEach>
