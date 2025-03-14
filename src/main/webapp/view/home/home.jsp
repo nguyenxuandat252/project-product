@@ -90,8 +90,9 @@
         }
 
         .product-card {
+            min-width: 270px;
             flex: 1 1 calc(25% - 20px); /* 4 sản phẩm mỗi hàng */
-            max-width: calc(25% - 20px);
+            max-width: calc(110% - 20px);
             border: 1px solid #ddd;
             border-radius: 8px;
             text-align: center;
@@ -112,6 +113,7 @@
         .btn {
             margin: 5px;
         }
+
         .pagination {
             display: flex;
             justify-content: center;
@@ -126,15 +128,30 @@
             color: black;
             border-radius: 5px;
         }
+
         .pagination a:hover {
             background-color: #f0f0f0;
         }
-        .product-card p:first-child{
+
+        .product-card p:first-child {
             height: 130px;
         }
-        h2{
+
+        h2 {
             text-align: center;
         }
+
+        .row {
+            justify-content: space-around;
+        }
+
+        /*@media (min-width: 768px) {*/
+        /*    .row > div:nth-child(2):nth-last-child(1) {*/
+        /*        flex: 0 0 50%; !* Nếu có 2 sản phẩm, mỗi cái chiếm 50% *!*/
+        /*    }*/
+        /*    .row > div:nth-child(1):nth-last-child(0) {*/
+        /*        flex: 0 0 33%; !* Nếu chỉ có 1 sản phẩm, chiếm 33% *!*/
+        /*    }}*/
     </style>
 </head>
 <body>
@@ -143,7 +160,8 @@
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand" href="#">
-            <img src="https://img.favpng.com/22/12/19/web-page-world-wide-web-website-internet-logo-png-favpng-56JhDBu1frEDMakzkv63TuQKM.jpg" alt="Logo" width="40" height="40" class="d-inline-block align-top">
+            <img src="https://img.favpng.com/22/12/19/web-page-world-wide-web-website-internet-logo-png-favpng-56JhDBu1frEDMakzkv63TuQKM.jpg"
+                 alt="Logo" width="40" height="40" class="d-inline-block align-top">
             MyShop
         </a>
 
@@ -207,23 +225,30 @@
     </div>
 </nav>
 <h2>Danh sách sản phẩm</h2>
-<form action="/cart" method="get">
-    <div class="product-container">
+<div class="container">
+
+    <div class="row"> <!-- Đưa row ra ngoài vòng lặp -->
         <c:forEach var="product" items="${productList}">
-            <div class="product-card">
-                <p>
-                    <img src="${product.getImageUrl()}" title="${product.getDescription()}">
-                </p>
-                <p>${product.getName()}</p>
-                <p><fmt:formatNumber value="${product.getPrice()}" type="currency" currencySymbol="₫"/></p>
-                <p>
-                    <a href="/home/cart?id=${product.getId()}" class="btn btn-primary btn-sm">Thêm giỏ hàng</a>
-                        <%--                <button class="btn btn-primary">Đặt hàng</button>--%>
-                </p>
+            <div class="col-12 col-md-6 col-lg-3 d-flex">
+                <div class="product-card">
+                    <p>
+                        <img src="${product.getImageUrl()}" title="${product.getDescription()}">
+                    </p>
+                    <p>${product.getName()}</p>
+                    <p>
+                        <fmt:formatNumber value="${product.getPrice()}" type="currency"
+                                          currencySymbol="₫"/>
+                    </p>
+                    <p>
+                        <a href="/home/cart?id=${product.getId()}" class="btn btn-primary btn-sm">
+                            Thêm giỏ hàng
+                        </a>
+                    </p>
+                </div>
             </div>
         </c:forEach>
-    </div>
-</form>
+    </div> <!-- Kết thúc row -->
+</div>
 <!-- Hiển thị phân trang -->
 <div class="pagination">
     <c:if test="${currentPage > 1}">
@@ -243,7 +268,7 @@
     if (message != null) {
 %>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         var toastElement = document.getElementById("cartToast");
         var toast = new bootstrap.Toast(toastElement);
         toast.show();
@@ -255,12 +280,14 @@
 %>
 
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="cartToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div id="cartToast" class="toast align-items-center text-white bg-success border-0" role="alert"
+         aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
             <div class="toast-body">
                 Sản phẩm đã được thêm vào giỏ hàng thành công!
             </div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
         </div>
     </div>
 </div>
